@@ -1,0 +1,2 @@
+ErrorDocument 404 /ecn9222/235/error/error.html
+DirectoryIndex noterror.html
