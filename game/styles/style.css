@@ -1,0 +1,39 @@
+body {
+    font-family: arial, sans-serif;
+    background-color: rgb(229, 235, 237);
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Figtree", sans-serif;
+}
+
+h1,
+h3 {
+    color: red;
+    border-bottom: 1px solid blue;
+}
+
+h2 {
+    color: darkred;
+}
+
+p,
+ul {
+    margin-left: 100px;
+}
+
+footer p {
+    margin-left: 25px;
+}
+
+blockquote {
+    background-color: lightgray;
+    padding: 1rem;
+}
+
+img.side {
+    float: right;
+    margin: 0 12px;
+}
