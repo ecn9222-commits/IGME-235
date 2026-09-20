@@ -1,0 +1,67 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(11, 75, 58);
+    background-color: rgb(162, 211, 197);
+    margin-left: 10vmin;
+    margin-right: 10vmin;
+}
+
+h1 {
+    font-size: 6vmax;
+    color: rgb(2, 40, 30);
+    font-weight: bold;
+}
+
+h2 {
+    color: rgb(4, 52, 39);
+    font-size: 3vmax;
+    border: 2px dashed rgb(62, 124, 107);
+    padding-left: 10px;
+}
+
+.link_heading {
+    color: rgb(4, 52, 39);
+    border: 2px dashed rgb(108, 148, 137);
+    margin-left: 5vmin;
+    margin-right: 5vmin;
+}
+
+.link_content {
+    font-size: 2vmax;
+    margin-left: 8vmin;
+    margin-right: 8vmin;
+}
+
+#bio_para {
+    overflow: auto;
+    height: 50vh;
+    padding: 1vmin;
+    font-size: 4.8vh;
+    text-align: justify;
+}
+
+#bio_image {
+    float: left;
+    margin-right: 2vw;
+    height: 50vh;
+}
+
+a:link {
+    color: rgb(11, 53, 75);
+}
+
+a:visited {
+    color: rgb(11, 26, 75);
+}
+
+a:hover {
+    color: rgb(23, 69, 95);
+}
+
+a:focus {
+    color: rgb(15, 132, 195);
+}
+
+a:active {
+    color: rgb(10, 35, 48);
+}
