@@ -1,12 +1,20 @@
 body {
     font-family: arial, sans-serif;
-    background-color: rgb(237, 244, 237);
+    background-color: rgb(39, 40, 56);
     color: rgb(51, 77, 41);
-    margin: 20px 50px 20px 50px;
+}
+
+main,
+header,
+footer {
+    background-color: rgb(237, 244, 237);
+    border: 1px solid black;
+    margin: 0 auto;
+    width: 80vw;
+    padding: 1rem 1rem 1rem 1rem;
 }
 
 footer {
-    padding: 5px 10px 5px 10px;
     background-color: rgb(118, 161, 179);
     color: rgb(39, 40, 56);
 }
