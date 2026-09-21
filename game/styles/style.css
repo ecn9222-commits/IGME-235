@@ -1,6 +1,19 @@
 body {
     font-family: arial, sans-serif;
-    background-color: rgb(229, 235, 237);
+    background-color: rgb(237, 244, 237);
+    color: rgb(51, 77, 41);
+    margin: 20px 50px 20px 50px;
+}
+
+footer {
+    padding: 5px 10px 5px 10px;
+    background-color: rgb(118, 161, 179);
+    color: rgb(39, 40, 56);
+}
+
+footer h3 {
+    color: rgb(39, 40, 56);
+    border-bottom-color: rgb(219, 43, 57);
 }
 
 h1,
@@ -11,12 +24,12 @@ h3 {
 
 h1,
 h3 {
-    color: red;
-    border-bottom: 1px solid blue;
+    color: rgb(34 51 27);
+    border-bottom: 1px solid rgb(219, 43, 57);
 }
 
 h2 {
-    color: darkred;
+    color: rgb(42 64 34);
 }
 
 p,
@@ -29,11 +42,31 @@ footer p {
 }
 
 blockquote {
-    background-color: lightgray;
+    background-color: rgb(183, 211, 222);
     padding: 1rem;
 }
 
 img.side {
     float: right;
     margin: 0 12px;
+}
+
+a:link {
+    color: rgb(219, 43, 57);
+}
+
+a:visited {
+    color: rgb(132, 27, 35);
+}
+
+a:focus {
+    color: rgb(221, 29, 45);
+}
+
+a:hover {
+    color: rgb(221, 29, 45);
+}
+
+a:active {
+    color: rgb(221, 29, 45);
 }
