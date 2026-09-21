@@ -1,0 +1,16 @@
+* {
+    border: 1px solid orange;
+}
+
+h2 {
+    border-bottom: 1px solid red;
+}
+
+figure {
+    float: right;
+    width: 40%;
+}
+
+figure img {
+    width: 100%;
+}
