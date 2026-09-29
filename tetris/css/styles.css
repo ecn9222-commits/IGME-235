@@ -1,34 +1,55 @@
 * {
-    /*border: 1px solid orange;*/
+    border: 1px solid orange;
 }
 
-h2 {
-    border-bottom: 1px solid red;
-    clear: right;
+header, main, footer {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 figure {
-    float: right;
-    width: 40%;
-    margin: 1rem 2rem 1rem 2rem;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 figure img {
     width: 100%;
 }
 
-div.tet {
-    width: 12rem;
-    float: left;
-    border: 2px solid darkgreen;
+#tetlist {
+    display: flex;
+    flex-flow: row wrap;
 }
 
-footer {
-    color: darkgray;
+div.tet {
+    border: 1px solid black;
+    flex: 0 1 450px;
+    text-align: center;
+}
+
+div.tet img {
+    width: 60%;
+}
+
+div.tet.long img {
+    width: 80%;
+}
+
+div.tet.square img {
     width: 40%;
-    clear: left;
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    z-index: -1;
+}
+
+div.aliases {
+    text-align: left;
+    margin: 1em 1em 1em 1em;
+}
+
+span.name {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
