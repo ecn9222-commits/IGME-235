@@ -1,0 +1,54 @@
+/* Set up addtional styling */
+* {
+    border: 1px solid red;
+}
+
+body {
+    margin: 5rem 10rem;
+}
+
+h2#author {
+    font-size: 3rem;
+}
+
+/* match h3 to h2 on specStyle doc */
+h3 {
+    font-family: "Rokkitt", 'Times New Roman', Times, serif;
+    font-weight: 900;
+}
+
+/* Reset the header to not be a grid on the doc page */
+header#doc_header {
+    display: block;
+}
+
+/* Changing link colors back to brighter blues (and purple) for documentation page */
+a {
+    color: blue;
+    text-decoration: underline;
+}
+
+a:link {
+    color: blue;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: purple;
+    text-decoration: underline;
+}
+
+a:focus {
+    color: rgb(1, 16, 61);
+    text-decoration: underline;
+}
+
+a:hover {
+    color: rgb(1, 16, 61);
+    text-decoration: underline;
+}
+
+a:active {
+    color: rgb(11, 53, 182);
+    text-decoration: underline;
+}
