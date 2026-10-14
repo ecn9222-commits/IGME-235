@@ -7,8 +7,20 @@ body {
     margin: 5rem 10rem;
 }
 
+header h1#title {
+    font-size: 7rem;
+    margin: 0;
+
+    align-self: auto;
+}
+
 h2#author {
     font-size: 3rem;
+    margin-left: 1rem;
+}
+
+main section > *:not(h1, h2, h3) {
+    margin: 0 1rem;
 }
 
 /* match h3 to h2 on specStyle doc */
