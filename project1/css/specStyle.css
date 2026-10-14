@@ -38,16 +38,27 @@ header {
 
     grid-template-columns: 65% 35%;
     grid-template-rows: auto auto;
+
+    padding: 0;
+    margin: 0;
 }
 
 header h1#title {
     grid-area: title;
 
     font-size: 7.8rem;
+    line-height: 1;
+    margin: 0;
+
+    align-self: end;
 }
 
 header p#intro {
     grid-area: blurb;
+
+    align-self: start;
+    margin: 0;
+    margin-left: 0.5rem;
 
     font-size: 2rem;
 }
@@ -61,8 +72,11 @@ header p#circle {
     height: 18rem;
     background: url(../media/circle.svg) no-repeat;
     background-size: 100%;
+    margin-bottom: 0;
 
-    padding: 9% 9%;
+    align-self: end;
+
+    padding: 1rem 1rem;
     color: white;
     font-size: 1.5rem;
     text-transform: uppercase;
@@ -70,12 +84,14 @@ header p#circle {
     align-content: center;
 
     position: relative;
-    top: 20%;
+    top: 3rem;
     z-index: -1;
 }
 
 header nav#page_nav {
     grid-area: nav;
+
+    margin: 0 -10rem;
 }
 
 /* Setting up and styling nav flex */
@@ -102,13 +118,21 @@ nav#page_nav ul a {
     padding: 1em 10px;
 
     height: auto;
-    background-color: rgb(119, 173, 175);
-    border: 2px solid rgb(105, 163, 170);
-    font-size: 1.2rem;
+    background-color: rgb(189, 211, 211);
+    border: 2px solid rgb(169, 191, 194);
+    font-size: 1.3rem;
+    font-weight: 800;
 
     align-content: center;
     text-align: center;
+}
 
+nav#page_nav ul li:first-of-type a {
+    border-radius: 50px 0 0 15px;
+}
+
+nav#page_nav ul li:last-child a {
+    border-radius: 0 50px 15px 0;
 }
 
 /* Setting up and styling projects grid */
@@ -280,4 +304,60 @@ footer p {
     grid-area: issue;
 
     text-align: right;
+}
+
+/* Changing link styles */
+a {
+    color: rgb(26, 57, 61);
+    text-decoration: underline;
+}
+
+a:link {
+    color: rgb(26, 57, 61);
+    text-decoration: underline;
+}
+
+a:visited {
+    color: rgb(4, 44, 49);
+    text-decoration: underline;
+}
+
+a:focus {
+    color: rgb(1, 16, 61);
+    text-decoration: underline;
+}
+
+a:hover {
+    color: rgb(1, 16, 61);
+    text-decoration: underline;
+}
+
+a:active {
+    color: rgb(11, 53, 182);
+    text-decoration: underline;
+}
+
+/* Changing link styles within navbar */
+nav#page_nav a {
+    text-decoration: none;
+}
+
+nav#page_nav a:link {
+    text-decoration: none;
+}
+
+nav#page_nav a:visited {
+    text-decoration: none;
+}
+
+nav#page_nav a:focus {
+    text-decoration: underline;
+}
+
+nav#page_nav a:hover {
+    text-decoration: underline;
+}
+
+nav#page_nav a:active {
+    text-decoration: underline;
 }
