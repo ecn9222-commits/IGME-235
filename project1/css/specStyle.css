@@ -198,7 +198,6 @@ div.project h2 {
     font-size: 1.6rem;
 
     height: auto;
-    min-height: max-content;
     width: auto;
     margin: 1.5rem 2rem 0 2rem;
 
@@ -206,9 +205,11 @@ div.project h2 {
 }
 
 div.project p {
+    grid-area: description;
+
     margin: 0.5rem 2rem 1rem 2rem;
 
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 div.project div.image {
