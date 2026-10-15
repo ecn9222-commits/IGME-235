@@ -1,6 +1,6 @@
 /* Set up addtional styling */
 * {
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 body {
@@ -20,7 +20,20 @@ h2#author {
 }
 
 main section > *:not(h1, h2, h3) {
-    margin: 0 1rem;
+    margin-left: 1rem;
+    max-width: 80%;
+}
+
+img {
+    display: block;
+
+    max-width: 60%;
+    width: 50rem;
+    border: 2px solid black;
+}
+
+p {
+    /* max-width: 80%; */
 }
 
 /* match h3 to h2 on specStyle doc */

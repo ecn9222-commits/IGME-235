@@ -23,6 +23,7 @@
     </header>
 
     <main>
+        <h2><a href="spec.html">Link to Site Built to Spec (spec.html)</a></h2>
         <section id="original">
             <h2>Link to Original Design Source PDF</h2>
             <a href="src/downmagaz.net.pdf">Pages from Animation Magazine publication </a>
@@ -30,28 +31,87 @@
         <section id="resources">
             <h2>Resources Used</h2>
             <ul>
-                <li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/circle">SVG circle
-                        resource 1</a></li>
-                <li><a href="https://www.w3schools.com/graphics/svg_circle.asp">SVG circle resource 2</a></li>
-                <li><a
-                        href="https://www.animationmagazine.net/2024/09/cartoon-forum-highlights-a-few-of-the-intriguing-animated-pitches-in-toulouse/">Website
-                        version of article (used to pull images for Phase 1)</a></li>
+                <li>
+                    SVG Circle Resources
+                    <ul>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/circle">
+                                SVG circle resource 1</a></li>
+                        <li><a href="https://www.w3schools.com/graphics/svg_circle.asp">SVG circle resource 2</a></li>
+                    </ul>
+                </li>
+                <li>
+                    Image Resources
+                    <ul>
+                        <li><a
+                                href="https://www.animationmagazine.net/2024/09/cartoon-forum-highlights-a-few-of-the-intriguing-animated-pitches-in-toulouse/">
+                                Website version of article (used to pull images for Phase 1)</a></li>
+                        <li>
+                            Images
+                            <ul>
+                                <li><a href="media/circle.svg">circle</a> - I created this SVG for this page</li>
+                                <li><a href="media/Chimera-Brigadejpg.jpg">Chimera-Brigadejpg</a></li>
+                                <li><a href="media/The-Broos.jpg">The-Broos</a></li>
+                                <li><a href="media/Lost-in-the-Future.jpg">Lost-in-the-Future</a></li>
+                                <li><a href="media/Mechazaurs.jpg">Mechazaurs</a></li>
+                                <li><a href="media/Hippo-Kids.jpg">Hippo-Kids</a></li>
+                                <li><a href="media/Matita-HB.jpg">Matita-HB</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Font Resources
+                    <ul>
+                        <li><a href="https://fonts.adobe.com/fonts/vs/upload">
+                                Tool used to identify possible fonts to match reference</a></li>
+                        <li><a
+                                href="https://fonts.google.com/share?selection.family=Aleo:ital,wght@0,100..900;1,100..900|Mukta:wght@200;300;400;500;600;700;800|PT+Sans:ital,wght@0,400;0,700;1,400;1,700|Roboto+Slab:wght@100..900|Rokkitt:ital,wght@0,100..900;1,100..900">
+                                Web fonts used in design</a></li>
+                        <li><a href="https://web.mit.edu/jmorzins/www/fonts.html">
+                                Referenced to complete font family assignments</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Pseudo-classes">
+                        Resource for Pseudo-Class Selectors</a> - Used to style the rounded corners on the nav bar and
+                    some spacing on the documentation page</li>
             </ul>
         </section>
         <section id="sketches">
             <h2>Sketches</h2>
             <section id="layout">
-                <h3>Sketch of Layout Grid</h3>
+                <h3>Sketch of Layout Grids</h3>
+                <img src="src/grid_layout_sketch.jpeg" alt="Sketch of page layout grids">
             </section>
             <section id="responsive">
                 <h3>Sketch of Intended Mobile/Narrow Version (Responiveness)</h3>
+                <img src="src/Responsive_Sketches.jpeg" alt="Sketch of responsive page layouts">
             </section>
         </section>
         <section id="goal">
             <h2>Site Goal</h2>
+            <p>The end goal of this website is for it to be a portfolio I can use when applying to co-ops and jobs. This
+                means that it's intended audience is recruiters and hiring managers/workers.</p>
+            <p>For Phase 1, this means that I chose a simpler design that is also easy to navigate so that the content
+                of the page is the focus. I also chose a design that used a tile-like organization of content because it
+                allows future flexibility of how I display work on the portfolio, and makes it easier to expand the
+                amount of content on the page if needed.</p>
         </section>
         <section id="additional_notes">
             <h2>Additional Notes</h2>
+            <ul>
+                <li>
+                    The project sections are designed to be like tiles/a template which can be reused to add more sections.
+                    (This is the reason each section is its own grid, instead of creating one grid for all the sections with
+                    many grid rows/columns to add each section's information. Instead, one grid arranges the tiles and then the
+                    tiles each arrange their own content.)
+                </li>
+                <li>
+                    Creating the rounded corners on the nav bar was interesting because the background is drawn by the a element,
+                    so changing the border-radius of the background required a chain of elements in a descendant selector, and then I 
+                    only wanted to affect the first and last nav bar elements so I had to use a pseudo-class selector within the 
+                    descendant selector to get the first and last li elements (which each have a link element as a child).
+                </li>
+            </ul>
         </section>
     </main>
 
