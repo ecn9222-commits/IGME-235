@@ -1,0 +1,364 @@
+/* Setting up fonts and base styling for page */
+body {
+    font-family: "Mukta", Arial, Helvetica, sans-serif;
+    color: rgb(35, 31, 32);
+
+    margin: 5rem 15rem;
+
+    overflow-wrap: break-word;
+}
+
+h1 {
+    font-family: "Aleo", 'Times New Roman', Times, serif;
+    font-weight: 900;
+}
+
+p#intro {
+    font-family: "PT Sans", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+p#circle {
+    font-family: "Roboto Slab", 'Times New Roman', Times, serif;
+    font-weight: 800;
+}
+
+h2 {
+    font-family: "Rokkitt", 'Times New Roman', Times, serif;
+    font-weight: 900;
+}
+
+/* Setting up and styling the header grid */
+header {
+    display: grid;
+
+    grid-template-areas:
+        "title  circle"
+        "blurb  circle"
+        "nav    nav";
+
+    grid-template-columns: 65% 35%;
+    grid-template-rows: auto auto auto;
+
+    padding: 0;
+    margin: 0;
+}
+
+header h1#title {
+    grid-area: title;
+
+    font-size: 6.2rem;
+    line-height: 1;
+    margin: 0;
+
+    align-self: end;
+}
+
+header p#intro {
+    grid-area: blurb;
+
+    align-self: start;
+    margin: 0;
+    margin-left: 0.5rem;
+
+    font-size: 2rem;
+}
+
+header p#circle {
+    grid-area: circle;
+
+    justify-self: center;
+
+    width: 18rem;
+    height: 18rem;
+    background: url(../media/circle.svg) no-repeat;
+    background-size: 100%;
+    margin-bottom: 0;
+
+    align-self: end;
+
+    padding: 1rem 1rem;
+    color: white;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    align-content: center;
+
+    position: relative;
+    top: 3rem;
+    z-index: -1;
+}
+
+header nav#page_nav {
+    grid-area: nav;
+
+    margin: 0 -10rem;
+}
+
+/* Setting up and styling nav flex */
+nav#page_nav ul {
+    display: flex;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1rem;
+
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+nav#page_nav ul li {
+    flex: 1 0 12em;
+}
+
+nav#page_nav ul a {
+    display: block;
+
+    padding: 1em 10px;
+
+    height: auto;
+    background-color: rgb(189, 211, 211);
+    border: 2px solid rgb(169, 191, 194);
+    font-size: 1.3rem;
+    font-weight: 800;
+
+    align-content: center;
+    text-align: center;
+}
+
+nav#page_nav ul li:first-of-type a {
+    border-radius: 50px 0 0 15px;
+}
+
+nav#page_nav ul li:last-child a {
+    border-radius: 0 50px 15px 0;
+}
+
+/* Setting up and styling projects grid */
+section#projects {
+    display: grid;
+
+    grid-template-areas:
+        "handyman handyman"
+        "scream_strong scream_strong"
+        "plinko plinko"
+        "book chess"
+        "book website";
+
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 30rem 30rem 30rem 45rem 54rem;
+}
+
+div#handyman {
+    grid-area: handyman;
+}
+
+div#scream_strong {
+    grid-area: scream_strong;
+}
+
+div#plinko {
+    grid-area: plinko;
+}
+
+div#book {
+    grid-area: book;
+}
+
+div#chess {
+    grid-area: chess;
+}
+
+div#website {
+    grid-area: website;
+}
+
+/* Setting up and styling basic templates for individual project grids */
+div.project {
+    display: grid;
+
+    grid-template-areas:
+        "image project_name"
+        "image description";
+
+    grid-template-columns: 55% 1fr;
+    grid-template-rows: auto 1fr;
+
+    overflow: hidden;
+    margin: 1rem 0;
+
+    background-color: lightblue;
+}
+
+div.project h2 {
+    grid-area: project_name;
+
+    text-transform: uppercase;
+    font-size: 1.6rem;
+
+    height: auto;
+    width: auto;
+    margin: 1.5rem 2rem 0 2rem;
+
+    text-wrap: wrap;
+}
+
+div.project .description {
+    grid-area: description;
+
+    margin: 0.5rem 2rem 1rem 2rem;
+
+    font-size: 1rem;
+}
+
+div.project div.image {
+    grid-area: image;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+div.project div.image img {
+    display: block;
+
+    max-width: 100%;
+    min-height: 100%;
+}
+
+div.project p {
+    grid-area: description;
+}
+
+div.vertical {
+    grid-template-areas:
+        "image"
+        "project_name"
+        "description";
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 60% auto 1fr;
+}
+
+
+
+/* Style changes specific to individual projects to match references */
+div.project#handyman {
+    background-color: rgb(202, 226, 166);
+}
+
+div.project#scream_strong {
+    grid-template-areas:
+        "project_name image"
+        "description image";
+
+    grid-template-columns: 1fr 55%;
+
+    background-color: rgb(202, 228, 245);
+}
+
+div.project#plinko {
+    background-color: rgb(250, 216, 230);
+}
+
+div.project#book {
+    margin-right: 1rem;
+
+    grid-template-rows: 50% auto 1fr;
+
+    background-color: rgb(250, 181, 140);
+}
+
+div.project#chess {
+    margin-left: 1rem;
+
+    background-color: rgb(245, 203, 215);
+}
+
+div.project#website {
+    margin-left: 1rem;
+
+    background-color: rgb(205, 233, 228);
+}
+
+/* Setting up and styling footer grid */
+footer {
+    display: grid;
+
+    grid-template-areas:
+        "site  issue";
+
+    grid-template-columns: 1fr 1fr;
+}
+
+footer a {
+    grid-area: site;
+
+    text-align: left;
+}
+
+footer p {
+    grid-area: issue;
+
+    text-align: right;
+}
+
+/* Changing link styles */
+a {
+    color: rgb(26, 57, 61);
+    text-decoration: underline;
+}
+
+a:link {
+    color: rgb(26, 57, 61);
+    text-decoration: underline;
+}
+
+a:visited {
+    color: rgb(4, 44, 49);
+    text-decoration: underline;
+}
+
+a:focus {
+    color: rgb(1, 16, 61);
+    text-decoration: underline;
+}
+
+a:hover {
+    color: rgb(1, 16, 61);
+    text-decoration: underline;
+}
+
+a:active {
+    color: rgb(11, 53, 182);
+    text-decoration: underline;
+}
+
+/* Changing link styles within navbar */
+nav#page_nav a {
+    text-decoration: none;
+}
+
+nav#page_nav a:link {
+    text-decoration: none;
+}
+
+nav#page_nav a:visited {
+    text-decoration: none;
+}
+
+nav#page_nav a:focus {
+    text-decoration: underline;
+}
+
+nav#page_nav a:hover {
+    text-decoration: underline;
+}
+
+nav#page_nav a:active {
+    text-decoration: underline;
+}
