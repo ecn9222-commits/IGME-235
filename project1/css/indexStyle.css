@@ -6,6 +6,8 @@ body {
     margin: 5rem 15rem;
 
     overflow-wrap: break-word;
+
+    max-width: 1440px;
 }
 
 h1 {
@@ -91,25 +93,27 @@ header p#circle {
 header nav#page_nav {
     grid-area: nav;
 
-    margin: 0 -10rem;
+    /* margin: 0 -10rem; */
 }
 
-/* Setting up and styling nav flex */
+/* Setting up and styling nav grid */
 nav#page_nav ul {
-    display: flex;
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
 
     list-style: none;
     margin: 0;
     padding: 0;
     margin-bottom: 1rem;
 
-    flex-flow: row wrap;
     justify-content: center;
     align-items: stretch;
 }
 
 nav#page_nav ul li {
-    flex: 1 0 12em;
+    height: auto;
 }
 
 nav#page_nav ul a {
@@ -117,7 +121,7 @@ nav#page_nav ul a {
 
     padding: 1em 10px;
 
-    height: auto;
+    height: 100%;
     background-color: rgb(189, 211, 211);
     border: 2px solid rgb(169, 191, 194);
     font-size: 1.3rem;
@@ -189,6 +193,8 @@ div.project {
     margin: 1rem 0;
 
     background-color: lightblue;
+
+    border-radius: 50px;
 }
 
 div.project h2 {
@@ -361,4 +367,81 @@ nav#page_nav a:hover {
 
 nav#page_nav a:active {
     text-decoration: underline;
+}
+
+/* First responsive breakpoint */
+@media screen and (max-width: 1140px) {
+
+    /* Adjusting base styling for page */
+    body {
+        margin: 5rem 5rem;
+    }
+
+    /* Adjusting nav grid */
+    nav#page_nav ul {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    nav#page_nav ul li:first-child a {
+        border-radius: 50px 0 0 0;
+    }
+
+    nav#page_nav ul li:nth-child(3) a {
+        border-radius: 0 50px 0 0;
+    }
+
+    nav#page_nav ul li:nth-child(4) a {
+        border-radius: 0 0 0 15px;
+    }
+
+    nav#page_nav ul li:last-child a {
+        border-radius: 0 0 15px 0;
+    }
+}
+
+/* Second responive breakpoint (mobile) */
+@media screen and (max-width: 768px) {
+
+    /* Adjusting header grid */
+    header {
+        grid-template-areas:
+            "title  title"
+            "blurb  circle"
+            "nav    nav";
+    }
+
+    /* Adjusting nav grid */
+    nav#page_nav ul {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    nav#page_nav ul li:first-child a {
+        border-radius: 50px 0 0 0;
+    }
+
+    nav#page_nav ul li:nth-child(2) a {
+        border-radius: 0 50px 0 0;
+    }
+
+    nav#page_nav ul li:nth-child(3) a {
+        border-radius: 0 0 0 0;
+    }
+
+    nav#page_nav ul li:nth-child(4) a {
+        border-radius: 0 0 0 0;
+    }
+
+    nav#page_nav ul li:nth-child(5) a {
+        border-radius: 0 0 0 15px;
+    }
+
+    nav#page_nav ul li:last-child a {
+        border-radius: 0 0 15px 0;
+    }
 }
