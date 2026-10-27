@@ -1,16 +1,22 @@
 /* Setting up fonts and base styling for page */
+html {
+    max-width: 1440px;
+    min-width: 568px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 body {
     font-family: "Mukta", Arial, Helvetica, sans-serif;
     color: rgb(35, 31, 32);
 
-    margin: 5rem 15rem;
+    margin: 5rem 10rem;
 
     overflow-wrap: break-word;
-
-    max-width: 1440px;
 }
 
-h1 {
+h1,
+h3 {
     font-family: "Aleo", 'Times New Roman', Times, serif;
     font-weight: 900;
 }
@@ -74,6 +80,7 @@ header p#circle {
     height: 18rem;
     background: url(../media/circle.svg) no-repeat;
     background-size: 100%;
+    background-position: center;
     margin-bottom: 0;
 
     align-self: end;
@@ -92,8 +99,6 @@ header p#circle {
 
 header nav#page_nav {
     grid-area: nav;
-
-    /* margin: 0 -10rem; */
 }
 
 /* Setting up and styling nav grid */
@@ -123,7 +128,7 @@ nav#page_nav ul a {
 
     height: 100%;
     background-color: rgb(189, 211, 211);
-    border: 2px solid rgb(169, 191, 194);
+    border: 5px solid rgb(169, 191, 194);
     font-size: 1.3rem;
     font-weight: 800;
 
@@ -151,7 +156,8 @@ section#projects {
         "book website";
 
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 30rem 30rem 30rem 45rem 54rem;
+    /* grid-template-rows: 30rem 30rem 30rem 45rem 54rem; */
+    grid-template-rows: auto;
 }
 
 div#handyman {
@@ -232,7 +238,9 @@ div.project div.image {
 div.project div.image img {
     display: block;
 
-    max-width: 100%;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
     min-height: 100%;
 }
 
@@ -255,6 +263,7 @@ div.vertical {
 /* Style changes specific to individual projects to match references */
 div.project#handyman {
     background-color: rgb(202, 226, 166);
+    border: 5px solid rgb(140, 160, 110);
 }
 
 div.project#scream_strong {
@@ -265,10 +274,12 @@ div.project#scream_strong {
     grid-template-columns: 1fr 55%;
 
     background-color: rgb(202, 228, 245);
+    border: 5px solid rgb(116, 141, 158);
 }
 
 div.project#plinko {
     background-color: rgb(250, 216, 230);
+    border: 5px solid rgb(181, 139, 157);
 }
 
 div.project#book {
@@ -277,18 +288,21 @@ div.project#book {
     grid-template-rows: 50% auto 1fr;
 
     background-color: rgb(250, 181, 140);
+    border: 5px solid rgb(155, 106, 78);
 }
 
 div.project#chess {
     margin-left: 1rem;
 
     background-color: rgb(245, 203, 215);
+    border: 5px solid rgb(145, 105, 117);
 }
 
 div.project#website {
     margin-left: 1rem;
 
     background-color: rgb(205, 233, 228);
+    border: 5px solid rgb(126, 158, 152);
 }
 
 /* Setting up and styling footer grid */
@@ -296,21 +310,42 @@ footer {
     display: grid;
 
     grid-template-areas:
-        "site  issue";
+        "heading heading"
+        "email linkedin";
 
-    grid-template-columns: 1fr 1fr;
+    justify-self: center;
+    justify-content: center;
+
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
 }
 
-footer a {
-    grid-area: site;
+footer>* {
+    padding: 0 1rem 0 1rem;
+}
 
-    text-align: left;
+footer h3#heading {
+    grid-area: heading;
+
+    font-size: 1.5rem;
+
+    text-align: center;
 }
 
 footer p {
-    grid-area: issue;
+    margin: 0;
+}
+
+footer p#email {
+    grid-area: email;
 
     text-align: right;
+}
+
+footer p#linkedin {
+    grid-area: linkedin;
+
+    text-align: left;
 }
 
 /* Changing link styles */
@@ -369,7 +404,7 @@ nav#page_nav a:active {
     text-decoration: underline;
 }
 
-/* First responsive breakpoint */
+/* Header first responsive breakpoint */
 @media screen and (max-width: 1140px) {
 
     /* Adjusting base styling for page */
@@ -400,9 +435,22 @@ nav#page_nav a:active {
     nav#page_nav ul li:last-child a {
         border-radius: 0 0 15px 0;
     }
+
+    /* Adjusting project grid */
+    section#projects {
+        grid-template-areas:
+            "handyman handyman"
+            "scream_strong scream_strong"
+            "plinko plinko"
+            "book chess"
+            "book website";
+
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 30rem 30rem 30rem 45rem 54rem;
+    }
 }
 
-/* Second responive breakpoint (mobile) */
+/* Header second responive breakpoint (mobile) */
 @media screen and (max-width: 768px) {
 
     /* Adjusting header grid */
@@ -414,6 +462,16 @@ nav#page_nav a:active {
     }
 
     /* Adjusting nav grid */
+    header p#circle {
+        width: 100%;
+        height: 100%;
+        min-width: 170px;
+
+        font-size: 1rem;
+
+        top: 30%;
+    }
+
     nav#page_nav ul {
         display: grid;
 
@@ -443,5 +501,90 @@ nav#page_nav a:active {
 
     nav#page_nav ul li:last-child a {
         border-radius: 0 0 15px 0;
+    }
+}
+
+/* Projects first breakpoint */
+@media screen and (max-width: 1240px) and (min-width:981px) {
+
+    /* Adjust so all horizontal */
+    section#projects {
+        grid-template-areas:
+            "handyman"
+            "scream_strong"
+            "plinko"
+            "book"
+            "chess"
+            "website";
+
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto auto auto auto;
+    }
+
+    div.project {
+        grid-template-areas:
+            "image project_name"
+            "image description" !important;
+
+        grid-template-columns: 55% 1fr !important;
+        grid-template-rows: auto 1fr !important;
+
+        max-height: 50vh;
+    }
+
+    div.project.right {
+        grid-template-areas:
+            "project_name image"
+            "description image" !important;
+
+        grid-template-columns: 1fr 55% !important;
+    }
+}
+
+/* Projects second breakpoint (mobile) */
+@media screen and (max-width: 980px) {
+
+    /* Adjust to all vertical blocks */
+    section#projects {
+        grid-template-areas:
+            "handyman"
+            "scream_strong"
+            "plinko"
+            "book"
+            "chess"
+            "website";
+
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto auto auto auto;
+    }
+
+    div.project {
+        grid-template-areas:
+            "image"
+            "project_name"
+            "description" !important;
+
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto auto auto !important;
+    }
+
+    div.project div.image {
+        max-height: 40vh;
+    }
+
+
+    /* Adjust footer */
+    footer {
+        grid-template-areas:
+            "heading"
+            "email"
+            "linkedin";
+
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto;
+    }
+
+    footer p {
+        text-align: center !important;
     }
 }
