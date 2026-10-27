@@ -4,6 +4,8 @@ html {
     min-width: 568px;
     margin-left: auto;
     margin-right: auto;
+
+    scroll-behavior: smooth;
 }
 
 body {
@@ -453,12 +455,20 @@ nav#page_nav a:active {
 /* Header second responive breakpoint (mobile) */
 @media screen and (max-width: 768px) {
 
-    /* Adjusting header grid */
+    /* Adjusting header and header grid */
     header {
         grid-template-areas:
             "title  title"
             "blurb  circle"
             "nav    nav";
+    }
+
+    header h1#title {
+        font-size: 5.2rem;
+    }
+
+    header p#intro {
+        font-size: 1.8rem;
     }
 
     /* Adjusting nav grid */
