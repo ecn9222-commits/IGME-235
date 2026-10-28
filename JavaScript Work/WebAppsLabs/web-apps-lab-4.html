@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Web Apps-4-HW</title>
+    <style>
+        body {
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>My Favorites</h1>
+    <h2>My Favorite Colors</h2>
+
+    <ol id="colorsList">
+
+    </ol>
+
+    <h2>My Favorite Foods</h2>
+
+    <ol id="foodsList">
+
+    </ol>
+
+    <h2>My Favorite Links</h2>
+
+    <ol id="linksList">
+
+    </ol>
+
+    <script>
+        "use strict";
+        let colors = ["blue", "purple", "green", "yellow", "red"];
+        let foods = ["meatloaf", "mac and cheese", "broccoli", "chicken", "noodles"]; // add some foods
+
+        // Optional - can you figure out how to pull both the key AND the value
+        // from the `links` object literal?
+        let links = {
+            "RIT": "http://www.rit.edu",
+            "RWAG": "https://www.facebook.com/RWAGclub",
+            "New Media Club": "http://newmediaclub.cias.rit.edu"
+        }
+
+        // Function to add to lists
+        function createList(listElement, array = ["puppydogs", "butterflies", "lollipops"]) {
+            for (let item of array) {
+                let listItem = document.createElement("li");
+                listItem.innerHTML = item.toString();
+                listElement.appendChild(listItem);
+            }
+        }
+
+        // Add colors to list
+        let listElement = document.querySelector("ol");
+        createList(listElement, colors);
+
+        // Add foods to list
+        listElement = document.querySelector("ol:nth-of-type(2)");
+        createList(listElement, foods);
+
+        // Add links to list
+        listElement = document.getElementById("linksList")
+        for (let key in links) {
+            let listItem = document.createElement("li");
+            listItem.innerHTML = `<a href="${links[key]}">${key}</a>`;
+            listElement.appendChild(listItem);
+        }
+
+    </script>
+</body>
+
+</html>
