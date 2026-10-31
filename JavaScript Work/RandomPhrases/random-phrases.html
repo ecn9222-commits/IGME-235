@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Phrases</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cause:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="generator">
+        <h1>Names to Call Your Dogs</h1>
+        <p id="generated_name">Press the button to get a name!</p>
+        <p id="credit">Made by Ellie Nagle</p>
+    </div>
+
+    <script>
+        "use strict";
+        let names = ["Tiny Baby", "Child", "KitKat", "Clementine", "Gremlin"];
+
+        // Function to display new quote
+        function displayQuote(quotes = ["default"], element) {
+            let newQuote = quotes[Math.floor((Math.random() * quotes.length))];
+            element.innerHTML = newQuote;
+        }
+
+        // display when page loads
+        displayQuote(names, document.querySelector("p"));
+        
+        // Button
+        let button = document.createElement("button");
+        button.innerHTML = "Get another name :)";
+        button.style.gridArea = "button";
+        document.querySelector("div").appendChild(button);
+        
+        // Change on button click
+        button.onclick = (buttonClicked) => displayQuote(names, document.querySelector("p"));
+
+    </script>
+</body>
+
+</html>

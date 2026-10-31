@@ -1,0 +1,90 @@
+body {
+    background-color: rgb(255, 196, 196);
+    margin: 0;
+    padding: 0;
+}
+
+div#generator {
+    aspect-ratio: 4 / 3;
+    box-sizing: border-box;
+
+    background: url(../media/poppy.JPG) no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    margin: auto;
+    height: 100vh;
+    max-width: 100%;
+
+    padding: 1rem;
+
+    display: grid;
+    grid-template-areas:
+        "header"
+        "gen_content"
+        "button"
+        "credit";
+    grid-template-rows: 1fr 1fr 0.75fr auto;
+    align-items: center;
+    justify-items: center;
+
+    color: rgb(104, 21, 67);
+}
+
+h1,
+p,
+button {
+    margin: auto;
+    width: fit-content;
+    text-align: center;
+
+    display: block;
+    box-sizing: border-box;
+    padding: 0.5rem;
+
+    background-color: rgba(255, 180, 180, 0.75);
+
+    font-family: "Cause", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1, p {
+    border-radius: 15px;
+}
+
+h1 {
+    grid-area: header;
+
+    font-size: 5rem;
+    font-weight: 800;
+}
+
+p#generated_name {
+    grid-area: gen_content;
+
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+button {
+    grid-area: button;
+
+    height: 90%;
+    width: 60%;
+    border-radius: 30px;
+    background-color: rgba(216, 136, 136, 0.95);
+    font-size: 3rem;
+    font-weight: 550;
+    color: rgb(104, 21, 67);
+}
+
+button:hover {
+    background-color: rgba(160, 79, 102, 0.95);
+}
+
+button:active {
+    background-color: rgba(104, 21, 67, 0.95);
+}
+
+p#credit {
+    grid-area: credit;
+}
