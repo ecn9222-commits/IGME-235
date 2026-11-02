@@ -44,6 +44,33 @@
 
     <script>
         /* Write your code here! */
+        // Variables to track for info and updating
+        let favColor = "";
+        const colorInputGroup = document.querySelector("div#colorform");
+        const outputElement = document.querySelector("p#info");
+        const submitButton = document.querySelector("button#colorButton");
+        const legendElement = document.querySelector("legend");
+
+        // Add an event as a listener to update the current color selection and output text
+        colorInputGroup.addEventListener("change", (event) => {
+            // console.log(event.target["id"]);
+            // don't need to filter out a change on the submit button b/c a button
+            // doesn't trigger a change event
+
+            // update let
+            favColor = event.target.value;
+            // update text
+            outputElement.innerHTML = `You have selected "${favColor}"!`;
+        });
+
+        // Add event listener for when submit button clicked
+        submitButton.addEventListener("click", (event) => {
+            // update legend color
+            legendElement.style.color = favColor;
+            // update info text
+            outputElement.innerHTML = `Your FINAL CHOICE is "${favColor}"!`
+        });
+        
     </script>
 </body>
 

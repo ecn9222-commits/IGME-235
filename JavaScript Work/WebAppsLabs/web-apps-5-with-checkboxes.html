@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Web Apps-5</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        #colorform {
+            background-color: #dfecdf;
+            color: #111;
+            padding: 1em;
+            width: 400px;
+        }
+
+        #colorform p#info {
+            background-color: white;
+            color: black;
+            width: 300px;
+            height: 100px;
+            padding: .5em;
+        }
+
+        #colorform legend {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="colorform">
+        <legend>Choose your favorite color!</legend>
+        <p><input type="checkbox" name="colorGroup" id="colorGroupRed" value="red" /> Red</p>
+        <p><input type="checkbox" name="colorGroup" id="colorGroupGreen" value="green" /> Green</p>
+        <p><input type="checkbox" name="colorGroup" id="colorGroupBlue" value="blue" /> Blue</p>
+        <p><button id="colorButton" type="button">Submit</button></p>
+        <p id="info"></p>
+    </div>
+
+    <script>
+        /* Write your code here! */
+        // Variables to track for info and updating
+        let favColors = [];
+        const colorInputGroup = document.querySelector("div#colorform");
+        const outputElement = document.querySelector("p#info");
+        const submitButton = document.querySelector("button#colorButton");
+        const legendElement = document.querySelector("legend");
+
+        // Add an event as a listener to update the current color selection and output text
+        colorInputGroup.addEventListener("change", (event) => {
+            // console.log(event.target["id"]);
+            // don't need to filter out a change on the submit button b/c a button
+            // doesn't trigger a change event
+
+            // add if checked
+            if (event.target.checked) { favColors.push(event.target.value); }
+            // remove if unchecked
+            else if (!event.target.checked) {
+                favColors = favColors.filter(color => color != event.target.value);
+            }
+            // update text
+            outputElement.innerHTML = `You have selected ${colorsToString()}!`;
+        });
+
+        // Add event listener for when submit button clicked
+        submitButton.addEventListener("click", (event) => {
+            // update info text
+            outputElement.innerHTML = `Your FINAL CHOICE is ${colorsToString()}!`
+        });
+
+        function colorsToString() {
+            let output = "";
+            for (let i = 0; i < favColors.length; i++) {
+                if (i > 0) output += " and ";
+                output += favColors[i];
+            }
+            return output;
+        }
+        
+    </script>
+</body>
+
+</html>
