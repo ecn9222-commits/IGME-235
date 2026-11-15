@@ -361,7 +361,7 @@ function fireBullet() {
     let b = new Bullet(0xffffff, ship.x, ship.y);
     bullets.push(b);
     gameScene.addChild(b);
-    if (score > 5) {
+    if (score >= 5) {
         let b2 = new Bullet(0xffffff, ship.x - 10, ship.y);
         bullets.push(b2);
         gameScene.addChild(b2);
