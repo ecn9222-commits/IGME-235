@@ -6,10 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trivia - Ellie Nagle</title>
     <link rel="stylesheet" href="css/bootstrap-reboot.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+        integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+        crossorigin="anonymous"></script>
+    <script src="js/trivia.js"></script>
 </head>
 
 <body>
@@ -19,7 +25,11 @@
 
     <main>
         <div id="search_details">
-            <select id="category"></select>
+            <select id="category">
+                <!-- hardcoded for now -->
+                 <option value="9">General Knowledge</option>
+                 <option value="10">Entertainment: Books</option>
+            </select>
             <select id="num_questions">
                 <option value="1">1</option>
                 <option value="5">5</option>
@@ -38,35 +48,44 @@
 
         <div id="questions">
             <div id="slideshow">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="https://placehold.co/500x300/0000FF/808080?text=Slide1" class="d-block w-100" alt="Slide 1">
-                        <button>Reveal answer</button>
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="q_content">
+                                <h2 class="q_question">No Questions Yet!</h2>
+                                <p class="q_answer">Selected a catergory and generate questions!</p>
+                                <button type="button" class="q_reveal">Reveal Answer</button>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://placehold.co/500x300/00AAFF/808080?text=Slide2" class="d-block w-100"
+                                alt="Slide 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://placehold.co/500x300/00FFAA/000000?text=Slide3" class="d-block w-100"
+                                alt="Slide 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://placehold.co/500x300/AADD00/000000?text=Slide4" class="d-block w-100"
+                                alt="Slide 4">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://placehold.co/500x300/22FADA/000000?text=Slide5" class="d-block w-100"
+                                alt="Slide 5">
+                        </div>
                     </div>
-                    <div class="carousel-item">
-                        <img src="https://placehold.co/500x300/00AAFF/808080?text=Slide2" class="d-block w-100" alt="Slide 2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://placehold.co/500x300/00FFAA/000000?text=Slide3" class="d-block w-100" alt="Slide 3">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://placehold.co/500x300/AADD00/000000?text=Slide4" class="d-block w-100" alt="Slide 4">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://placehold.co/500x300/22FADA/000000?text=Slide5" class="d-block w-100" alt="Slide 5">
-                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
-        </div>
         </div>
     </main>
 
