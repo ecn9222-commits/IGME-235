@@ -2,7 +2,7 @@ div#questions {
     margin: 10em;
 }
 
-div.carousel-item {
+div.carousel-item .q_content {
     background-color: lightgray;
     min-height: 20em;
 }
@@ -13,4 +13,8 @@ div.q_content {
 
 div.q_content .q_answer {
     display: none;
+}
+
+#slideshow2 {
+    margin: 10rem;
 }
