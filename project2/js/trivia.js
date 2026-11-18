@@ -1,8 +1,10 @@
 window.onload = (e) => {
     // generate list of categories
-    // getCategories("https://opentdb.com/api_category.php");
+    getCategories("https://opentdb.com/api_category.php");
     // add functionality to generate questions
     document.querySelector("#generate").onclick = generateButtonClicked
+    // Add reveal to default button
+    document.querySelector(".q_reveal").onclick = revealAnswer;
 };
 
 let category = "";
@@ -33,17 +35,20 @@ function categoriesLoaded(e) {
     let obj = JSON.parse(xhr.responseText);
 
     // if there are no results, print a message to console and return
-    if (!obj.results || obj.results.length == 0) {
+    if (!obj.trivia_categories || obj.trivia_categories.length == 0) {
         // document.querySelector("#status").innerHTML = "<b> No results found for '" + displayTerm + "'</b>";
         console.log("error loading categories");
         return; // Bail out
     }
 
     // Start building an HTML string we will display to the user
-    let results = obj.results;
+    let results = obj.trivia_categories;
     console.log("results.length = " + results.length);
     // let bigString = "<p><i>Here are " + results.length + " results for '" + displayTerm + "'</i></p>";
     let bigString = "";
+
+    // Add "select a category" and "any category", which both pull q's from any category
+    bigString += '<option value="-1">Select A Category</option><option value="-1">Any Category</option>';
 
     // loop through the array of results
     for (let i = 0; i < results.length; i++) {
@@ -56,13 +61,10 @@ function categoriesLoaded(e) {
         let name = result.name;
 
         // Build a select option for each
-        let line = `<option value='${id}'>${name}</option>`;
+        let line = `<option value='${idNum}'>${name}</option>`;
 
         // add the <option> to 'bigString' and loop
         bigString += line;
-        
-        // add line as a new child to category
-        // document.querySelector("#category").appendChild(line);
     }
 
     // all done building the HTML = show it to the user
@@ -84,10 +86,12 @@ function generateButtonClicked() {
 
     let category_term = document.querySelector("#category").value;
     category = category_term;
-    category_term = category_term.trim()
-    category_term = encodeURIComponent(category_term);
+    // category_term = category_term.trim()
+    // category_term = encodeURIComponent(category_term);
     if (category_term.length < 1) return;
-    url += "&category=" + category_term;
+    if (category_term != "-1") {
+        url += "&category=" + category_term;
+    }
 
     // Set to onlu true/false qs
     url += "&type=boolean";
@@ -153,16 +157,11 @@ function dataLoaded(e) {
 
         let answer = result.correct_answer;
 
-
-        // Build a <div> to hold each result
-        // ES6 string templating
-        // let line = `<div class='result'><img src='${smallURL}' title='${result.id}' />`;
-        // line += `<span><a target='_blank' href='${url}'>View on Giphy></a><br>Rating: ${result.rating.toUpperCase()}</span></div>`;
-
         // build a div for the question
         let line = "<div class='carousel-item";
         if (i == 0) line += " active";
-        line += "'><div class='q_content'></div>";
+        line += "'><div class='q_content d-block w-100 rounded-5'>";
+        line += `<h3 class="q_num">Question #${i + 1}</h3>`;
         line += `<h2 class="q_question">${question}</h2>`;
         line += `<p class="q_answer">${answer}</p>`;
         line += '<button type="button" class="q_reveal">Reveal Answer</button>';
@@ -172,9 +171,6 @@ function dataLoaded(e) {
         console.log("q added");
         console.log("line");
 
-        // another way of doing the same thing above
-        // look in directions for this (I don't wanna type it out)
-
         // add the <div> to 'bigString' and loop
         bigString += line;
     }
@@ -182,10 +178,25 @@ function dataLoaded(e) {
     // all done building the HTML = show it to the user
     document.querySelector(".carousel-inner").innerHTML = bigString;
 
+    // add revealAnswer to each button's onclick
+    let revealButtons = document.getElementsByClassName("q_reveal");
+    for (let button of revealButtons) {
+        button.onclick = revealAnswer;
+    }
+
     // update the status
     // document.querySelector("#status").innerHTML = "<b>Success!</b>" + "<p><i>Here are " + results.length + " results for '" + displayTerm + "'</i></p>";
 }
 
 function dataError(e) {
     console.log("An error occurred");
+}
+
+function revealAnswer(e) {
+    let revealButton = e.target;
+    console.log(revealButton);
+
+    let answerText = revealButton.previousElementSibling;
+
+    answerText.style.visibility = "visible";
 }
