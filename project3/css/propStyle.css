@@ -1,0 +1,37 @@
+html {
+    max-width: 1440px;
+    min-width: 568px;
+    margin-left: auto;
+    margin-right: auto;
+
+    scroll-behavior: smooth;
+
+    font-size: 20px;
+
+    background-color: rgb(208, 227, 227);
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(35, 31, 32);
+
+    /* margin: 5rem 10rem; */
+    margin: 0 5rem;
+    padding: 2rem;
+
+    background-color: rgb(238, 243, 243);
+
+    overflow-wrap: break-word;
+}
+
+main {
+    margin: 0 2em;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+p {
+    margin-left: 2em;
+}
