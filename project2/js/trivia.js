@@ -5,9 +5,23 @@ window.onload = (e) => {
     document.querySelector("#generate").onclick = generateButtonClicked
     // Add reveal to default button
     document.querySelector(".q_reveal").onclick = revealAnswer;
+    
+    // Add switch method to switch display button
+    document.querySelector("#switchDisplay").onclick = switchDisplay;
+    currentlyCarousel = true;
+    console.log(currentlyCarousel);
+    // Get references to the divs used to move/change display
+    carouselInnerDiv = document.querySelector(".carousel-inner");
+    showAllDiv = document.querySelector("#showAll");
+    slideshowDiv = document.querySelector("slideshow");
+
 };
 
 let category = "";
+let currentlyCarousel;
+let carouselInnerDiv;
+let showAllDiv;
+let slideshowDiv;
 
 function getCategories(url) {
     // create new XHR object
@@ -199,4 +213,14 @@ function revealAnswer(e) {
     let answerText = revealButton.previousElementSibling;
 
     answerText.style.visibility = "visible";
+}
+
+// Method to switch questions between displays
+function switchDisplay() {
+    if (currentlyCarousel) {
+        
+    }
+    else {
+
+    }
 }

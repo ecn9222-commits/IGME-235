@@ -26,10 +26,11 @@ body {
 
 main {
     /* margin: 0 2rem; */
-    margin: 2rem 6rem;
+    padding: 2rem 6rem;
 }
 
-header, footer {
+header,
+footer {
     background-color: rgb(133, 169, 169);
 }
 
@@ -45,7 +46,8 @@ h1 {
     font-size: 4rem;
 }
 
-p, h3 {
+p,
+h3 {
     padding-left: 2rem;
 }
 
@@ -59,3 +61,34 @@ img {
     max-height: 50vh;
 }
 
+/* Adjust display for mobile */
+@media screen and (max-width: 768px) {
+    body {
+        margin: 0;
+    }
+
+    main {
+        /* margin: 0 2rem; */
+        /* padding: 2rem 6rem; */
+        padding: 2rem 4rem;
+    }
+
+    header {
+        /* padding: 2rem 4rem 1rem 4rem; */
+        padding: 2rem 2rem 1rem 2rem;
+    }
+
+    footer {
+        /* padding: 1rem 4rem 2rem 4rem; */
+        padding: 1rem 2rem 2rem 4rem;
+    }
+
+    p,
+    h3 {
+        padding-left: 1rem;
+    }
+
+    img {
+        padding-left: 1rem;
+    }
+}

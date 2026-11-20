@@ -1,6 +1,6 @@
-* {
-    border: 1px solid black
-}
+/* * {
+    border: 1px solid black;
+} */
 
 div#questions {
     margin: 2em;
@@ -8,6 +8,7 @@ div#questions {
 
 div#slideshow {
     background-color: lightcyan;
+    padding: 2rem;
 }
 
 div#carouselPeek {
@@ -27,8 +28,14 @@ div#carouselPeek {
         "question",
         "answer",
         "button";
+
+    padding: 3rem;
 }
 
 div.q_content .q_answer {
     visibility: hidden;
+}
+
+#carouselPeek {
+    gap: 0;
 }
