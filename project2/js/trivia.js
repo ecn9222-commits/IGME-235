@@ -25,9 +25,6 @@ window.onload = (e) => {
     questionsDiv = document.querySelector("#questions");
     carouselPeekDiv = document.querySelector("#carouselPeek");
 
-    // Add listener for when select q num is changed
-    // document.querySelector("#selectQNum").onchange = changeQuestionDisplay;
-
 };
 
 let category = "";
@@ -74,7 +71,6 @@ function categoriesLoaded(e) {
 
     // if there are no results, print a message to console and return
     if (!obj.trivia_categories || obj.trivia_categories.length == 0) {
-        // document.querySelector("#status").innerHTML = "<b> No results found for '" + displayTerm + "'</b>";
         console.log("error loading categories");
         return; // Bail out
     }
@@ -82,7 +78,6 @@ function categoriesLoaded(e) {
     // Start building an HTML string we will display to the user
     let results = obj.trivia_categories;
     console.log("results.length = " + results.length);
-    // let bigString = "<p><i>Here are " + results.length + " results for '" + displayTerm + "'</i></p>";
     let bigString = "";
 
     // Add "select a category" and "any category", which both pull q's from any category
@@ -107,9 +102,6 @@ function categoriesLoaded(e) {
 
     // all done building the HTML = show it to the user
     document.querySelector("#category").innerHTML = bigString;
-
-    // update the status
-    // document.querySelector("#status").innerHTML = "<b>Success!</b>" + "<p><i>Here are " + results.length + " results for '" + displayTerm + "'</i></p>";
 
     // Set category equal to stored webdata
     category = localStorage.getItem(categoryKey);
@@ -137,18 +129,10 @@ function generateButtonClicked() {
 
     let category_term = document.querySelector("#category").value;
     category = category_term;
-    // category_term = category_term.trim()
-    // category_term = encodeURIComponent(category_term);
     if (category_term.length < 1) return;
     if (category_term != "-1") {
         url += "&category=" + category_term;
     }
-
-    // Set to onlu true/false qs
-    // url += "&type=boolean";
-
-    // update the UI
-    // document.querySelector("#status").innerHTML = "<b>Searching for '" + displayTerm + "'</b>";
 
     // see what the URL looks like
     console.log(url);
@@ -193,7 +177,6 @@ function dataLoaded(e) {
 
     // if there are no results, print a message and return
     if (!obj.results || obj.results.length == 0) {
-        // document.querySelector("#status").innerHTML = "<b> No results found for '" + category + "'</b>";
         console.log("bail");
         document.querySelector(".carousel-inner").innerHTML = "<h2>An error occurred while loading questions. Please wait a few seconds and try again.";
         return; // Bail out
@@ -203,11 +186,7 @@ function dataLoaded(e) {
     let results = obj.results;
     console.log("results.length = " + results.length);
     document.querySelector(".carousel-overlay-controls").style.visibility = "visible";
-    // let bigString = "<p><i>Here are " + results.length + " results for '" + displayTerm + "'</i></p>";
     let bigString = "";
-
-    // Reset question selector to empty
-    // document.querySelector("#selectQNum").innerHTML = "";
 
     // loop through the array of results
     for (let i = 0; i < results.length; i++) {
@@ -224,22 +203,6 @@ function dataLoaded(e) {
         line += "'><div class='q_content d-block w-100 rounded-5'>";
         line += `<h3 class="q_num">Question #${i + 1}</h3>`;
         line += `<h2 class="q_question">${question}</h2>`;
-
-
-        // <div>
-        //         <input type="radio" id="huey" name="drone" value="huey" checked />
-        //         <label for="huey">Huey</label>
-        //     </div>
-
-        //     <div>
-        //         <input type="radio" id="dewey" name="drone" value="dewey" />
-        //         <label for="dewey">Dewey</label>
-        //     </div>
-
-        //     <div>
-        //         <input type="radio" id="louie" name="drone" value="louie" />
-        //         <label for="louie">Louie</label>
-        //     </div>
 
         // Build a display of all possible answers
         // value of the div is the correct answer
@@ -266,15 +229,8 @@ function dataLoaded(e) {
         line += '<button type="button" class="q_reveal">Reveal Answer</button>';
         line += '</div></div>';
 
-        // document.querySelector(".carousel-inner").appendChild(line);
-        // console.log("q added");
-        // console.log("line");
-
         // add the <div> to 'bigString' and loop
         bigString += line;
-
-        // Add a new number to the question selector
-        // document.querySelector("#selectQNum").innerHTML += `<option value="${i}">${i+1}</option>`
     }
 
     // all done building the HTML = show it to the user
@@ -294,9 +250,6 @@ function dataLoaded(e) {
     for (let p of checkResults) {
         p.style.visibility = "hidden";
     }
-
-    // update the status
-    // document.querySelector("#status").innerHTML = "<b>Success!</b>" + "<p><i>Here are " + results.length + " results for '" + displayTerm + "'</i></p>";
 }
 
 // Called when there is an error loading data (either categories or questions)
@@ -360,14 +313,6 @@ function switchDisplay(e) {
         e.target.textContent = "Display All Questions";
     }
 }
-
-// function changeQuestionDisplay(e) {
-//     let carouselInstance = this.bootstrap.Carousel.getInstance(carouselPeekDiv);
-
-//     // Move to selected slide
-//     console.log("try change");
-//     carouselInstance.to(e.target.value);
-// }
 
 // Called when the "Check Answer!" button is clicked.
 // Checks that an answer has been seleced. If one has, it sets
