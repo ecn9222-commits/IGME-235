@@ -2,7 +2,12 @@
     border: 1px solid black;
 } */
 
-div#questions {
+body {
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main {
     margin: 2em;
 }
 
@@ -24,12 +29,17 @@ div#carouselPeek {
 
     display: grid;
     grid-template-areas:
-        "number",
-        "question",
-        "answer",
-        "button";
+        "number"
+        "question"
+        "possibleAnswers"
+        "checkResult"
+        "checkButton"
+        "answer"
+        "revealButton";
 
-    padding: 3rem;
+    grid-template-rows: auto auto auto 1fr 2fr 1fr 2fr;
+
+    padding: 5rem;
 }
 
 div.q_content .q_answer {
@@ -38,4 +48,69 @@ div.q_content .q_answer {
 
 #carouselPeek {
     gap: 0;
+}
+
+.carousel-overlay-controls {
+    padding: 0 3rem;
+}
+
+.q_checkAnswers, .q_reveal {
+    width: 50%;
+    height: 3em;
+    margin: auto;
+}
+
+.q_answer, .q_checkResult {
+    margin: auto;
+    height: 2em;
+    align-content: center;
+}
+
+.q_possibleAnswers {
+    width: 50%;
+    margin: auto;
+    padding-left: 1rem;
+    padding-top: 1rem;
+}
+
+label {
+    padding-left: 1em;
+}
+
+div#showAll {
+    width: 100%;
+    padding: 2rem 5rem;
+}
+
+button#switchDisplay {
+    display: block;
+    margin: 1rem;
+    margin-left: auto;
+}
+
+/* Format header */
+
+header {
+    display: grid;
+    grid-template-areas:
+        "title title title"
+        "category num_questions generate";
+    grid-template-columns: 4fr 1fr 2fr;
+    grid-template-rows: 3fr 1fr;
+}
+
+header h1 {
+    grid-area: title;
+}
+
+header #category {
+    grid-area: category;
+}
+
+header #num_questions {
+    grid-area: num_questions;
+}
+
+header #generate {
+    grid-area: generate;
 }

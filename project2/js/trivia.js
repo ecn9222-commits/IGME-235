@@ -5,7 +5,7 @@ window.onload = (e) => {
     document.querySelector("#generate").onclick = generateButtonClicked
     // Add reveal to default button
     document.querySelector(".q_reveal").onclick = revealAnswer;
-    
+
     // Add switch method to switch display button
     document.querySelector("#switchDisplay").onclick = switchDisplay;
     currentlyCarousel = true;
@@ -13,7 +13,11 @@ window.onload = (e) => {
     // Get references to the divs used to move/change display
     carouselInnerDiv = document.querySelector(".carousel-inner");
     showAllDiv = document.querySelector("#showAll");
-    slideshowDiv = document.querySelector("slideshow");
+    questionsDiv = document.querySelector("#questions");
+    carouselPeekDiv = document.querySelector("#carouselPeek");
+
+    // Add listener for when select q num is changed
+    // document.querySelector("#selectQNum").onchange = changeQuestionDisplay;
 
 };
 
@@ -21,7 +25,8 @@ let category = "";
 let currentlyCarousel;
 let carouselInnerDiv;
 let showAllDiv;
-let slideshowDiv;
+let questionsDiv;
+let carouselPeekDiv;
 
 function getCategories(url) {
     // create new XHR object
@@ -108,7 +113,7 @@ function generateButtonClicked() {
     }
 
     // Set to onlu true/false qs
-    url += "&type=boolean";
+    // url += "&type=boolean";
 
     // update the UI
     // document.querySelector("#status").innerHTML = "<b>Searching for '" + displayTerm + "'</b>";
@@ -162,6 +167,9 @@ function dataLoaded(e) {
     // let bigString = "<p><i>Here are " + results.length + " results for '" + displayTerm + "'</i></p>";
     let bigString = "";
 
+    // Reset question selector to empty
+    // document.querySelector("#selectQNum").innerHTML = "";
+
     // loop through the array of results
     for (let i = 0; i < results.length; i++) {
         let result = results[i];
@@ -177,16 +185,57 @@ function dataLoaded(e) {
         line += "'><div class='q_content d-block w-100 rounded-5'>";
         line += `<h3 class="q_num">Question #${i + 1}</h3>`;
         line += `<h2 class="q_question">${question}</h2>`;
+
+
+        // <div>
+        //         <input type="radio" id="huey" name="drone" value="huey" checked />
+        //         <label for="huey">Huey</label>
+        //     </div>
+
+        //     <div>
+        //         <input type="radio" id="dewey" name="drone" value="dewey" />
+        //         <label for="dewey">Dewey</label>
+        //     </div>
+
+        //     <div>
+        //         <input type="radio" id="louie" name="drone" value="louie" />
+        //         <label for="louie">Louie</label>
+        //     </div>
+
+        // Build a display of all possible answers
+        // value of the div is the correct answer
+        line += `<div class="q_possibleAnswers" data-value="${answer}"><h3>Options:</h3>`;
+        let possibleAnswers = result.incorrect_answers;
+        possibleAnswers[possibleAnswers.length] = result.correct_answer;
+        // console.log(possibleAnswers);
+        while (possibleAnswers.length > 0) {
+            let randIndex = Math.random();
+            randIndex *= possibleAnswers.length;
+            randIndex = Math.floor(randIndex);
+
+            // line += `<p>${possibleAnswers[randIndex]}</p>`;
+            line += `<div><input type="radio" id="${possibleAnswers[randIndex]}${i + 1}" name="answerOptions${i + 1}" value="${possibleAnswers[randIndex]}" /><label for="${possibleAnswers[randIndex]}${i + 1}">${possibleAnswers[randIndex]}</label></div>`;
+
+            possibleAnswers.splice(randIndex, 1);
+        }
+        line += '</fieldset></div>';
+        line += '<p class="q_checkResult">No Result Yet</p>'
+        line += '<button type="button" class="q_checkAnswers">Check Answer!</button>';
+
+        // continue building div for question
         line += `<p class="q_answer">${answer}</p>`;
         line += '<button type="button" class="q_reveal">Reveal Answer</button>';
         line += '</div></div>';
 
         // document.querySelector(".carousel-inner").appendChild(line);
-        console.log("q added");
-        console.log("line");
+        // console.log("q added");
+        // console.log("line");
 
         // add the <div> to 'bigString' and loop
         bigString += line;
+
+        // Add a new number to the question selector
+        // document.querySelector("#selectQNum").innerHTML += `<option value="${i}">${i+1}</option>`
     }
 
     // all done building the HTML = show it to the user
@@ -195,7 +244,16 @@ function dataLoaded(e) {
     // add revealAnswer to each button's onclick
     let revealButtons = document.getElementsByClassName("q_reveal");
     for (let button of revealButtons) {
+        button.disabled = true;
         button.onclick = revealAnswer;
+    }
+    let checkButtons = document.getElementsByClassName("q_checkAnswers");
+    for (let button of checkButtons) {
+        button.onclick = checkAnswer;
+    }
+    let checkResults = document.getElementsByClassName("q_checkResult");
+    for (let p of checkResults) {
+        p.style.visibility = "hidden";
     }
 
     // update the status
@@ -208,19 +266,93 @@ function dataError(e) {
 
 function revealAnswer(e) {
     let revealButton = e.target;
-    console.log(revealButton);
+    // console.log(revealButton);
 
     let answerText = revealButton.previousElementSibling;
 
     answerText.style.visibility = "visible";
+    revealButton.disabled = true;
 }
 
 // Method to switch questions between displays
-function switchDisplay() {
+function switchDisplay(e) {
     if (currentlyCarousel) {
-        
+        // Code to switch
+        // Move to show all div
+        showAllDiv.appendChild(carouselInnerDiv);
+        // Hide questions div
+        questionsDiv.style.display = "none";
+        // Change to vertical flex direction
+        carouselInnerDiv.style.flexDirection = "column";
+        carouselInnerDiv.style.gap = "2rem";
+
+        // Change bool tracker
+        currentlyCarousel = false;
+
+        // Change button text
+        e.target.textContent = "Display One Question";
     }
     else {
+        // Code to switch
+        // Move to carousel
+        carouselPeekDiv.appendChild(carouselInnerDiv);
+        // Show questions div
+        questionsDiv.style.display = "block";
+        // Change back to row flex
+        carouselInnerDiv.style.flexDirection = "row";
+        carouselInnerDiv.style.gap = "";
 
+        // Change bool tracker
+        currentlyCarousel = true;
+
+        // Change button text
+        e.target.textContent = "Display All Questions";
     }
+}
+
+// function changeQuestionDisplay(e) {
+//     let carouselInstance = this.bootstrap.Carousel.getInstance(carouselPeekDiv);
+
+//     // Move to selected slide
+//     console.log("try change");
+//     carouselInstance.to(e.target.value);
+// }
+
+// Lock in user's answer and check whether the user selected the correct answer
+function checkAnswer(e) {
+    // Get the check button which was checked
+    console.log("check clicked");
+    let checkButton = e.target;
+    // Get the radio set group name for this question
+    let answerGroupName = checkButton.previousElementSibling.previousElementSibling.querySelector("input").name;
+    console.log(answerGroupName);
+
+    // Get the currently selected answer
+    let selectedAnswer = document.querySelector(`input[name="${answerGroupName}"]:checked`)?.value;
+    console.log(selectedAnswer);
+
+    // end method if nothing selected
+    if (selectedAnswer == undefined) {
+        console.log("No answer selected");
+        return;
+    }
+
+    let checkResultsP = checkButton.previousElementSibling;
+    if (checkButton.previousElementSibling.previousElementSibling.dataset.value == selectedAnswer) {
+        checkResultsP.innerHTML = "Correct!";
+    }
+    else {
+        checkResultsP.innerHTML = "Incorrect.";
+    }
+    checkResultsP.style.visibility = "visible";
+    checkButton.disabled = true;
+
+    // disable radios for this question
+    let answerRadios = document.querySelectorAll(`input[name="${answerGroupName}"]`);
+    answerRadios.forEach(radio => {
+        radio.disabled = true;
+    });
+
+    // enable reveal answer button
+    checkButton.nextElementSibling.nextElementSibling.disabled = false;
 }
