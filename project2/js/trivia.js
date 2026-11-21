@@ -18,7 +18,6 @@ window.onload = (e) => {
     // Add switch method to switch display button
     document.querySelector("#switchDisplay").onclick = switchDisplay;
     currentlyCarousel = true;
-    console.log(currentlyCarousel);
     // Get references to the divs used to move/change display
     carouselInnerDiv = document.querySelector(".carousel-inner");
     showAllDiv = document.querySelector("#showAll");
@@ -64,7 +63,7 @@ function categoriesLoaded(e) {
     let xhr = e.target;
 
     // xhr.responseText is the JSON file we just downloaded
-    console.log(xhr.responseText);
+    // console.log(xhr.responseText);
 
     // turn the text into a parsable JavaScript object
     let obj = JSON.parse(xhr.responseText);
@@ -77,7 +76,7 @@ function categoriesLoaded(e) {
 
     // Start building an HTML string we will display to the user
     let results = obj.trivia_categories;
-    console.log("results.length = " + results.length);
+    // console.log("results.length = " + results.length);
     let bigString = "";
 
     // Add "select a category" and "any category", which both pull q's from any category
@@ -115,8 +114,6 @@ function categoriesLoaded(e) {
 // url that is then used to open an xhr request. Also updated the
 // browser local storage
 function generateButtonClicked() {
-    console.log("generateButtonClicked() called");
-
     document.querySelector(".carousel-inner").innerHTML = "<h2>Loading questions...</h2>";
     document.querySelector(".carousel-overlay-controls").style.visibility = "hidden";
 
@@ -130,12 +127,15 @@ function generateButtonClicked() {
     let category_term = document.querySelector("#category").value;
     category = category_term;
     if (category_term.length < 1) return;
+    // If "Choose a Category" or "Any Category" is selected, the value of catergory_term
+    // will be -1 and the category attribute will not be added to the URL. This
+    // means that questions returned by the API will be from any category 
     if (category_term != "-1") {
         url += "&category=" + category_term;
     }
 
     // see what the URL looks like
-    console.log(url);
+    // console.log(url);
 
     // Update web storage
     localStorage.setItem(categoryKey, category);
@@ -170,21 +170,21 @@ function dataLoaded(e) {
     let xhr = e.target;
 
     // xhr.responseText is the JSON file we just downloaded
-    console.log(xhr.responseText);
+    // console.log(xhr.responseText);
 
     // turn the text into a parsable JavaScript object
     let obj = JSON.parse(xhr.responseText);
 
     // if there are no results, print a message and return
     if (!obj.results || obj.results.length == 0) {
-        console.log("bail");
+        // console.log("bail");
         document.querySelector(".carousel-inner").innerHTML = "<h2>An error occurred while loading questions. Please wait a few seconds and try again.";
         return; // Bail out
     }
 
     // Start building an HTML string we will display to the user
     let results = obj.results;
-    console.log("results.length = " + results.length);
+    // console.log("results.length = " + results.length);
     document.querySelector(".carousel-overlay-controls").style.visibility = "visible";
     let bigString = "";
 
@@ -209,7 +209,6 @@ function dataLoaded(e) {
         line += `<div class="q_possibleAnswers" data-value="${answer}"><h3>Options:</h3>`;
         let possibleAnswers = result.incorrect_answers;
         possibleAnswers[possibleAnswers.length] = result.correct_answer;
-        // console.log(possibleAnswers);
         while (possibleAnswers.length > 0) {
             let randIndex = Math.random();
             randIndex *= possibleAnswers.length;
@@ -254,7 +253,7 @@ function dataLoaded(e) {
 
 // Called when there is an error loading data (either categories or questions)
 function dataError(e) {
-    console.log("An error occurred");
+    // console.log("An error occurred");
     document.querySelector(".carousel-inner").innerHTML = "<h2>An error occurred while loading data. Please wait a few seconds and try again.";
 }
 
@@ -262,7 +261,6 @@ function dataError(e) {
 // after the answer is revealed.
 function revealAnswer(e) {
     let revealButton = e.target;
-    // console.log(revealButton);
 
     let answerText = revealButton.previousElementSibling;
 
@@ -321,19 +319,16 @@ function switchDisplay(e) {
 // and enables the button that allows the user to reveal the answer.
 function checkAnswer(e) {
     // Get the check button which was checked
-    console.log("check clicked");
     let checkButton = e.target;
     // Get the radio set group name for this question
     let answerGroupName = checkButton.previousElementSibling.previousElementSibling.querySelector("input").name;
-    console.log(answerGroupName);
 
     // Get the currently selected answer
     let selectedAnswer = document.querySelector(`input[name="${answerGroupName}"]:checked`)?.value;
-    console.log(selectedAnswer);
 
     // end method if nothing selected
     if (selectedAnswer == undefined) {
-        console.log("No answer selected");
+        // console.log("No answer selected");
         return;
     }
 

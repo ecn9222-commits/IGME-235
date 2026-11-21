@@ -70,15 +70,18 @@ div.q_content .q_answer {
     padding: 0 3rem;
 }
 
-.q_checkAnswers, .q_reveal {
+.q_checkAnswers,
+.q_reveal {
     width: 50%;
     height: 3em;
     margin: 0.25rem auto 1rem auto;
 }
 
-.q_answer, .q_checkResult {
+.q_answer,
+.q_checkResult {
     margin: auto;
-    height: 2.5em;
+    min-height: 2.5em;
+    height: auto;
     width: 40%;
     text-align: center;
     align-content: center;
@@ -127,9 +130,12 @@ button#switchDisplay {
 
 /* Format header & footer */
 
-header, footer {
+header,
+footer {
     background-color: darkblue;
     color: lightblue;
+
+    width: 100%;
 
     padding: 2rem 3rem;
 }
@@ -166,6 +172,60 @@ header #num_questions {
 header #generate {
     grid-area: generate;
     margin-right: 5rem;
+}
+
+footer {
+    display: grid;
+    grid-template-areas: "name documentation prototype";
+    grid-template-columns: 1fr auto auto;
+    grid-template-rows: auto;
+}
+
+footer #name {
+    grid-area: name;
+}
+
+footer #doc {
+    grid-area: documentation;
+}
+
+footer #proto {
+    grid-area: prototype;
+}
+
+footer>* {
+    padding: 1rem;
+}
+
+/* Changing link styles */
+a {
+    color: lightblue;
+    text-decoration: underline;
+}
+
+a:link {
+    color: lightblue;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: rgb(134, 171, 184);
+    text-decoration: underline;
+}
+
+a:focus {
+    color: rgb(104, 138, 149);
+    text-decoration: underline;
+}
+
+a:hover {
+    color: rgb(104, 138, 149);
+    text-decoration: underline;
+}
+
+a:active {
+    color: rgb(149, 189, 202);
+    text-decoration: underline;
 }
 
 /* Some element styling for throughout the page */
@@ -211,4 +271,126 @@ h2 {
 
 input[type="radio"] {
     accent-color: rgb(1, 1, 43);
+}
+
+
+/* Resizing for mobile */
+@media screen and (max-width: 900px) {
+    body {
+        font-size: 16px;
+    }
+
+    header,
+    footer {
+        padding: 2rem 0;
+    }
+
+    header {
+        display: grid;
+        grid-template-areas:
+            "title"
+            "category"
+            "num_questions"
+            "generate";
+        grid-template-columns: auto;
+        grid-template-rows: 3fr 1fr 1fr 1fr;
+        gap: 1rem;
+    }
+
+    header h1 {
+        width: 100%;
+        font-size: 6em;
+    }
+
+    header #category {
+        margin-left: 0;
+        max-width: 96vw;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    header #num_questions {
+        width: 5em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    header #generate {
+        margin: auto;
+        width: 50%;
+        height: 100%;
+    }
+
+    footer {
+        grid-template-areas:
+            "documentation prototype"
+            "name name";
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+    }
+
+    footer>* {
+        padding: 1rem;
+    }
+
+    footer #doc {
+        margin-left: auto;
+    }
+
+    footer #proto {
+        margin-right: auto;
+    }
+
+    footer #name {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    button#switchDisplay {
+        margin: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0;
+
+        padding: 0.5rem;
+
+        background-color: rgba(24, 24, 101, 0.8);
+    }
+
+    main {
+        padding: 2em 0.25em;
+    }
+
+    div#slideshow {
+        margin: 1rem 0.25rem 2rem 0.25rem;
+    }
+
+    .q_content {
+        padding: 1rem;
+    }
+
+    .q_possibleAnswers {
+        width: auto;
+        margin: auto;
+        padding: 2rem 0;
+    }
+
+    .q_checkAnswers,
+    .q_reveal {
+        width: 75%;
+    }
+
+    .q_answer,
+    .q_checkResult {
+        width: 60%;
+    }
+
+    .carousel-overlay-controls {
+        padding: 0 1rem;
+    }
+
+    div#showAll {
+        padding: 1rem 0.5rem 2rem 0.5rem;
+    }
 }
