@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 1 Documentation - Ellie Nagle</title>
+    <title>Project 2 Documentation</title>
     <link rel="stylesheet" href="css/bootstrap-reboot.css">
-    <link rel="stylesheet" href="css/specStyle.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/docStyle.css">
     <!--Connection for PT Sans, Mukta, Rokkitt, Roboto Slab, and Aleo fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,105 +18,180 @@
 
 <body>
     <header id="doc_header">
-        <h1 id="title">Project 1 Documentation</h1>
+        <h1 id="title">Project 2 Documentation</h1>
         <h2 id="author">Ellie Nagle</h2>
     </header>
 
     <main>
-        <h2><a href="spec.html">Link to Site Built to Spec (spec.html)</a></h2>
-        <section id="original">
-            <h2>Link to Original Design Source PDF</h2>
-            <a href="src/downmagaz.net.pdf">Pages from Animation Magazine publication </a>
+        <section id="proposal">
+            <h2>Site Proposal</h2>
+            <p>Planning to create a basic trivia site where a user can generate trivia questions within a selected
+                category. Audience is wider due to the range of categories in the API, but basically is just people who
+                are looking to get trivia question and answers. After the user gets the question results and they have
+                been displayed on the page, they will be able to click on a box to reveal the answer to each question.
+            </p>
+            <p>Planning to use the Open Trivia DB API.</p>
+        </section>
+        <section id="sketches">
+            <h2>Sketch(es)</h2>
+            <section id="proposed">
+                <h3>Sketch of Proposed Site</h3>
+                <img src="src/Project_2_Proposal.jpg" alt="Sketch of proposed site">
+            </section>
+        </section>
+        <section id="prototype">
+            <h2>Prototype</h2>
+            <a href="prototype.html">Link to prototype</a>
+            <section id="feedback">
+                <h3>Feedback on Prototype</h3>
+                <img src="src/Proj2_feedback.jpg" alt="Scan of feedback page from peer reviews">
+            </section>
+        </section>
+        <section id="finished_page">
+            <h2>Finished Page</h2>
+            <a href="index.html">Link to finished page</a>
+            <section id="site_features">
+                <h3>Site Features</h3>
+                <ul>
+                    <li>
+                        The user can select a category and number of questions to generate in separate dropdowns,
+                        and then click a "generate" button to call data from the API which is then added to the DOM.
+                    </li>
+                    <li>
+                        By clicking a button, the user can swap between displaying the questoins within a Bootstrap
+                        Carousel and displaying all of the questions displayed down the page. The text on the button
+                        changes depending on how the questions are currently displayed. Radio button selections,
+                        answer check states, and answer reveal states persist when the questions are swapped between
+                        display types.
+                    </li>
+                    <li>
+                        The user can navigate the carousel either through side scrolling or by using the "next" and
+                        "previous" buttons in the bottom corner of the carousel.
+                    </li>
+                    <li>
+                        After questions are generated, the question number, question, a list of possible answers, and
+                        a "Check Answers!" button are displayed. A "Reveal Answer" button is also displayed, but is
+                        disabled.
+                        <br>
+                        The user can select an answer from the possible answers using the radio buttons. When they
+                        then click the "Check Answers" button, a textbox is shown between the options and the button
+                        telling the user whether they were correct. The radio buttons and the "Check Answer" button
+                        are then disabled, and the "Reveal Answer" button is enabled. If the user clicks "Check Answer"
+                        without selecting anything, nothing happens.
+                        <br>
+                        After the "Reveal Answer" button is enable, the user can then click it to reveal a text box
+                        containing the correct answer to the question. The "Reveal Answer" button is then disabled.
+                    </li>
+                    <li>
+                        When the user clicks the "Generate" button, the selected category and number of questions
+                        are storage to the browser local storage. These stored values are then loaded in the next time
+                        the user loads the site to set the category and number of questions select elements equal to
+                        the stored values;
+                    </li>
+                </ul>
+            </section>
         </section>
         <section id="resources">
             <h2>Resources Used</h2>
             <ul>
                 <li>
-                    SVG Circle Resources
+                    Sites used for DOM information
                     <ul>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/circle">
-                                SVG circle resource 1</a></li>
-                        <li><a href="https://www.w3schools.com/graphics/svg_circle.asp">SVG circle resource 2</a></li>
-                    </ul>
-                </li>
-                <li>
-                    Image Resources
-                    <ul>
-                        <li><a
-                                href="https://www.animationmagazine.net/2024/09/cartoon-forum-highlights-a-few-of-the-intriguing-animated-pitches-in-toulouse/">
-                                Website version of article (used to pull images for Phase 1)</a></li>
                         <li>
-                            Images
-                            <ul>
-                                <li><a href="media/circle.svg">circle</a> - I created this SVG for this page</li>
-                                <li><a href="media/Chimera-Brigadejpg.jpg">Chimera-Brigadejpg</a></li>
-                                <li><a href="media/The-Broos.jpg">The-Broos</a></li>
-                                <li><a href="media/Lost-in-the-Future.jpg">Lost-in-the-Future</a></li>
-                                <li><a href="media/Mechazaurs.jpg">Mechazaurs</a></li>
-                                <li><a href="media/Hippo-Kids.jpg">Hippo-Kids</a></li>
-                                <li><a href="media/Matita-HB.jpg">Matita-HB</a></li>
-                            </ul>
+                            <a
+                                href="https://github.com/rit-igm-web/igme-235-shared/blob/main/tutorial/HW-gif-finder-lab.md">
+                                GIF Finder homework referenced/copied to figure out how to request and format data
+                                from the API
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/visibility">
+                                Referenced to hide/show certain elements within the DOM without removing their
+                                space from the flow.
+                            </a>
+                            <br>
+                            (In some other cases display: none was used to hide elements, but
+                            this property/value removes the item entirely from the flow, and so the page can jump
+                            around and bit when the value is set back to be visible).
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild">
+                                Referenced to learn how to move entire div of questions between display locations in the
+                                DOM.
+                            </a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    Font Resources
+                    Documentation referenced for Bootstrap Carousel (v6.0)
                     <ul>
-                        <li><a href="https://fonts.adobe.com/fonts/vs/upload">
-                                Tool used to identify possible fonts to match reference</a></li>
-                        <li><a
-                                href="https://fonts.google.com/share?selection.family=Aleo:ital,wght@0,100..900;1,100..900|Mukta:wght@200;300;400;500;600;700;800|PT+Sans:ital,wght@0,400;0,700;1,400;1,700|Roboto+Slab:wght@100..900|Rokkitt:ital,wght@0,100..900;1,100..900">
-                                Web fonts used in design</a></li>
-                        <li><a href="https://web.mit.edu/jmorzins/www/fonts.html">
-                                Referenced to complete font family assignments</a></li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/6.0/components/carousel/">Carousel Documentation</a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/docs/6.0/getting-started/install/">
+                                Importing Bootstrap into the page through a CDN
+                            </a>
+                        </li>
                     </ul>
                 </li>
-                <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Pseudo-classes">
-                        Resource for Pseudo-Class Selectors</a> - Used to style the rounded corners on the nav bar and
-                    some spacing on the documentation page</li>
+                <li>
+                    Open Trivia Database API Documentation
+                    <ul>
+                        <li>
+                            <a href="https://opentdb.com/api_config.php">Used to read documentation and get API URLs</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </section>
-        <section id="sketches">
-            <h2>Sketches</h2>
-            <section id="layout">
-                <h3>Sketch of Layout Grids</h3>
-                <img src="src/grid_layout_sketch.jpeg" alt="Sketch of page layout grids">
-            </section>
-            <section id="responsive">
-                <h3>Sketch of Intended Mobile/Narrow Version (Responiveness)</h3>
-                <img src="src/Responsive_Sketches.jpeg" alt="Sketch of responsive page layouts">
-            </section>
-        </section>
-        <section id="goal">
-            <h2>Site Goal</h2>
-            <p>The end goal of this website is for it to be a portfolio I can use when applying to co-ops and jobs. This
-                means that it's intended audience is recruiters and hiring managers/workers.</p>
-            <p>For Phase 1, this means that I chose a simpler design that is also easy to navigate so that the content
-                of the page is the focus. I also chose a design that used a tile-like organization of content because it
-                allows future flexibility of how I display work on the portfolio, and makes it easier to expand the
-                amount of content on the page if needed.</p>
-        </section>
-        <section id="additional_notes">
-            <h2>Additional Notes</h2>
+        <section id="meet_reqs">
+            <h2>Meeting Requirements</h2>
             <ul>
                 <li>
-                    The project sections are designed to be like tiles/a template which can be reused to add more sections.
-                    (This is the reason each section is its own grid, instead of creating one grid for all the sections with
-                    many grid rows/columns to add each section's information. Instead, one grid arranges the tiles and then the
-                    tiles each arrange their own content.)
+                    <h3>API</h3>
+                    Data from the API is retrieved based on the user's chosen category and number of
+                    questions. The data is then used to display the given question and possible answers.
+                    It is also used to check whether the user's selected answer is correct and to display
+                    the correct answer.
                 </li>
                 <li>
-                    Creating the rounded corners on the nav bar was interesting because the background is drawn by the a element,
-                    so changing the border-radius of the background required a chain of elements in a descendant selector, and then I 
-                    only wanted to affect the first and last nav bar elements so I had to use a pseudo-class selector within the 
-                    descendant selector to get the first and last li elements (which each have a link element as a child).
+                    <h3>Local Storage</h3>
+                    The player's selected category and number of questions selection is stored in local storage
+                    when the "Generate" button is clicked. This data is loaded into the select elements when the
+                    page is loaded again.
+                </li>
+                <li>
+                    <h3>Controls</h3>
+                    The page includes more than three controls which change the DOM (and are not just "Search" buttons).
+                    The main ones are the category selector, number of questions selector, and the button to
+                    change how the questions display. However, the "Check Answer" and "Reveal Answer" buttons also
+                    change the DOM around them within their specific question.
+                </li>
+                <li>
+                    <h3>Error Free</h3>
+                    No errors are thrown as the page runs. The only possible error to show up in console is a 429 status
+                    return from the API because the API rate-limits the user to one request every 5 seconds. This is
+                    handled by displaying a state update to the user of "An error occurred while loading questions.
+                    Please
+                    wait a few seconds and try again." The player is then able to click then "Generate" button again and
+                    get new questions once the rate-limit has passed.
+                </li>
+                <li>
+                    <h3>Suggested Grade: A-</h3>
+                    I included more controls than required, and worked with a CSS Framework (Bootstrap)
+                    to format the questions in a carousel. However, the style/design is pretty simple. It does use
+                    CSS grid formatting in some areas (header, footer, and for each question), but it doesn't use any
+                    images or graphics. Instead it just styles with different colors, sizings, and some borders.
                 </li>
             </ul>
         </section>
     </main>
 
     <footer>
-
+        <p id="name">&copy;2026 Eleanor C. Nagle</p>
+        <a id="doc" href="index.html">Main Page</a>
+        <a id="proto" href="prototype.html">Prototype</a>
     </footer>
 </body>
 
