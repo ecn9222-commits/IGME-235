@@ -17,6 +17,7 @@ html {
 body {
     font-size: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(95, 95, 217);
 }
 
 main {
@@ -28,6 +29,7 @@ main {
 div#slideshow {
     background-color: rgba(0, 0, 139, 0.25);
     border: 2px solid darkblue;
+    padding: 1rem 0;
     margin: 1rem 2rem 2rem 2rem;
 }
 
@@ -36,10 +38,14 @@ div#carouselPeek {
     height: 100%;
 }
 
+.carousel-inner {
+    align-items: center;
+}
+
 .q_content {
     background-color: rgb(137, 137, 238);
     min-height: 20em;
-    height: 100%;
+    height: auto;
     width: auto;
 
     display: grid;
@@ -52,9 +58,11 @@ div#carouselPeek {
         "answer"
         "revealButton";
 
-    grid-template-rows: auto auto auto 1fr 2fr 1fr 2fr;
+    /* grid-template-rows: auto auto auto 1fr 2fr 1fr 2fr; */
+    grid-template-rows: auto;
 
     padding: 5rem;
+    padding-bottom: auto;
 }
 
 div.q_content .q_answer {
@@ -72,20 +80,26 @@ div.q_content .q_answer {
 .q_checkAnswers, .q_reveal {
     width: 50%;
     height: 3em;
-    margin: auto;
+    margin: 0.25rem auto 1rem auto;
 }
 
 .q_answer, .q_checkResult {
     margin: auto;
-    height: 2em;
+    height: 2.5em;
+    width: 40%;
+    text-align: center;
     align-content: center;
+
+    font-weight: 500;
+
+    background-color: rgba(0, 0, 139, 0.1);
+    border-radius: 7px;
 }
 
 .q_possibleAnswers {
     width: 50%;
     margin: auto;
-    padding-left: 1rem;
-    padding-top: 1rem;
+    padding: 2rem;
 }
 
 .q_possibleAnswers div {
@@ -106,7 +120,12 @@ button#switchDisplay {
     display: block;
     margin: 1rem;
     margin-left: auto;
+    margin-right: 5rem;
     margin-bottom: 0;
+
+    padding: 0.5rem;
+
+    background-color: rgba(24, 24, 101, 0.8);
 }
 
 .carousel-item {
@@ -125,17 +144,21 @@ header, footer {
 header {
     display: grid;
     grid-template-areas:
-        "title title empty"
+        "title title title"
         "category num_questions generate";
     grid-template-columns: 3fr 5em 2fr;
     grid-template-rows: 3fr 1fr;
     gap: 1rem;
+    border-bottom: 10px solid rgba(0, 0, 139, 0.75);
+    background-clip: padding-box;
 }
 
 header h1 {
     grid-area: title;
-    font-size: 8rem;
+    font-size: 8em;
     text-align: center;
+    border-bottom: 5px dashed rgba(1, 1, 43, 0.5);
+    border-top: 5px dashed rgba(1, 1, 43, 0.5);
 }
 
 header #category {
@@ -158,6 +181,7 @@ button {
     border-color: rgb(84, 103, 195);
     color: lightblue;
     font-weight: 600;
+    border-radius: 7px;
 }
 
 button:disabled {
@@ -166,12 +190,22 @@ button:disabled {
     color: rgba(173, 216, 230, 0.5);
 }
 
+button.ctrlBtn {
+    background-color: rgba(24, 24, 101, 0.8);
+}
+
+button.cntrlBtn:disabled {
+    background-color: rgba(24, 24, 101, 0.5);
+}
+
 select {
     background-color: rgb(137, 137, 238);
     color: rgb(1, 1, 43);
     font-weight: 600;
 
     padding: 0 0.5rem;
+
+    border-radius: 7px;
 }
 
 h3 {
@@ -180,4 +214,8 @@ h3 {
 
 h2 {
     font-size: 2em;
+}
+
+input[type="radio"] {
+    accent-color: rgb(1, 1, 43);
 }

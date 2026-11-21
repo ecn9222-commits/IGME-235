@@ -1,6 +1,15 @@
 window.onload = (e) => {
     // generate list of categories
     getCategories("https://opentdb.com/api_category.php");
+    // Category is set equal to webdata within methods b/c of load orders
+
+    // Set number questions equal to stored webdata
+    numQ = localStorage.getItem(numQKey);
+    // If a stored number questions was found, set select element to that number questions
+    if (numQ) {
+        document.querySelector("#num_questions").value = numQ;
+    }
+
     // add functionality to generate questions
     document.querySelector("#generate").onclick = generateButtonClicked
     // style starting box
@@ -22,11 +31,17 @@ window.onload = (e) => {
 };
 
 let category = "";
+let numQ;
 let currentlyCarousel;
 let carouselInnerDiv;
 let showAllDiv;
 let questionsDiv;
 let carouselPeekDiv;
+
+// For saving the selected category in webstorage
+const prefix = "ecn9222-";
+const categoryKey = prefix + "category";
+const numQKey = prefix + "numQ";
 
 function getCategories(url) {
     // create new XHR object
@@ -91,6 +106,13 @@ function categoriesLoaded(e) {
 
     // update the status
     // document.querySelector("#status").innerHTML = "<b>Success!</b>" + "<p><i>Here are " + results.length + " results for '" + displayTerm + "'</i></p>";
+
+    // Set category equal to stored webdata
+    category = localStorage.getItem(categoryKey);
+    // If a stored category was found, set select element to that category
+    if (category) {
+        document.querySelector("#category").value = category;
+    }
 }
 
 function generateButtonClicked() {
@@ -120,6 +142,10 @@ function generateButtonClicked() {
 
     // see what the URL looks like
     console.log(url);
+
+    // Update web storage
+    localStorage.setItem(categoryKey, category);
+    localStorage.setItem(numQKey, amount);
 
     // Request data
     getData(url);
@@ -287,6 +313,7 @@ function switchDisplay(e) {
         // Change to vertical flex direction
         carouselInnerDiv.style.flexDirection = "column";
         carouselInnerDiv.style.gap = "2rem";
+        carouselInnerDiv.style.alignItems = "normal";
 
         // Change bool tracker
         currentlyCarousel = false;
@@ -305,6 +332,7 @@ function switchDisplay(e) {
         // Change back to row flex
         carouselInnerDiv.style.flexDirection = "row";
         carouselInnerDiv.style.gap = "";
+        carouselInnerDiv.style.alignItems = "center";
 
         // Change bool tracker
         currentlyCarousel = true;
