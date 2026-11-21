@@ -3,8 +3,8 @@ window.onload = (e) => {
     getCategories("https://opentdb.com/api_category.php");
     // add functionality to generate questions
     document.querySelector("#generate").onclick = generateButtonClicked
-    // Add reveal to default button
-    document.querySelector(".q_reveal").onclick = revealAnswer;
+    // style starting box
+    document.querySelector(".q_question").style.gridArea = "question";
 
     // Add switch method to switch display button
     document.querySelector("#switchDisplay").onclick = switchDisplay;
@@ -282,6 +282,8 @@ function switchDisplay(e) {
         showAllDiv.appendChild(carouselInnerDiv);
         // Hide questions div
         questionsDiv.style.display = "none";
+        // Show show all div
+        showAllDiv.style.display = "block";
         // Change to vertical flex direction
         carouselInnerDiv.style.flexDirection = "column";
         carouselInnerDiv.style.gap = "2rem";
@@ -296,6 +298,8 @@ function switchDisplay(e) {
         // Code to switch
         // Move to carousel
         carouselPeekDiv.appendChild(carouselInnerDiv);
+        // Hide show all div\
+        showAllDiv.style.display = "none";
         // Show questions div
         questionsDiv.style.display = "block";
         // Change back to row flex

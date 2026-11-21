@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trivia - Ellie Nagle</title>
+    <title>Trivia! - Ellie Nagle</title>
     <!-- Old Bootstrap Link (Peeking Carousel is only in 6.0.0-alpha)
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> -->
@@ -24,29 +24,26 @@
 
 <body>
     <header>
-        <h1>Trivia</h1>
-
-        <div id="search_details">
-            <select id="category">
-                <!-- hardcoded for now -->
-                <option value="-1">Choose a Category</option>
-                <option value="-1">Any Category</option>
-            </select>
-            <select id="num_questions">
-                <option value="1">1</option>
-                <option value="5">5</option>
-                <option value="10" selected>10</option>
-                <option value="15">15</option>
-                <option value="20">20</option>
-                <option value="25">25</option>
-                <option value="30">30</option>
-                <option value="35">35</option>
-                <option value="40">40</option>
-                <option value="45">45</option>
-                <option value="50">50</option>
-            </select>
-            <button id="generate" type="button">Generate Questions!</button>
-        </div>
+        <h1>Trivia!</h1>
+        <select id="category">
+            <!-- hardcoded for now -->
+            <option value="-1">Choose a Category</option>
+            <option value="-1">Any Category</option>
+        </select>
+        <select id="num_questions">
+            <option value="1">1</option>
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
+            <option value="35">35</option>
+            <option value="40">40</option>
+            <option value="45">45</option>
+            <option value="50">50</option>
+        </select>
+        <button id="generate" type="button">Generate Questions!</button>
     </header>
 
     <main>
@@ -59,12 +56,12 @@
                         <div class="carousel-overlay-controls">
                             <div>
                                 <button class="btn-icon btn-sm" type="button" data-bs-target="#carouselPeek"
-                                    data-bs-slide="prev" style="--bs-carousel-control-icon-width: 1rem;">
+                                    data-bs-slide="prev" style="--bs-carousel-control-icon-width: 3rem;">
                                     <span class="carousel-icon-prev" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
                                 <button class="btn-icon btn-sm" type="button" data-bs-target="#carouselPeek"
-                                    data-bs-slide="next" style="--bs-carousel-control-icon-width: 1rem;">
+                                    data-bs-slide="next" style="--bs-carousel-control-icon-width: 3rem;">
                                     <span class="carousel-icon-next" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>
@@ -75,10 +72,8 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="q_content d-block w-100 rounded-5">
-                                <h3 class="q_num">Question #0</h3>
-                                <h2 class="q_question">No Questions Yet!</h2>
-                                <p class="q_answer">Select a catergory and generate questions!</p>
-                                <button type="button" class="q_reveal">Reveal Answer</button>
+                                <!-- <h3 class="q_num">Question #0</h3> -->
+                                <h2 class="q_question">Select a category and generate questions!</h2>
                             </div>
                         </div>
                     </div>
@@ -88,6 +83,10 @@
 
         <div id="showAll"></div>
     </main>
+
+    <footer>
+        <p>&copy;2026 Eleanor C. Nagle</p>
+    </footer>
 
 
     <!-- Old Bootstrap Links
