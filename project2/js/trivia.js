@@ -43,6 +43,8 @@ const prefix = "ecn9222-";
 const categoryKey = prefix + "category";
 const numQKey = prefix + "numQ";
 
+// Opens/handles getting an xhr request for the categories,
+// and then calling appropriate functions based on results
 function getCategories(url) {
     // create new XHR object
     let xhr = new XMLHttpRequest();
@@ -58,6 +60,8 @@ function getCategories(url) {
     xhr.send();
 }
 
+// Handles updating the html if the categories were successfully
+// loaded from the API
 function categoriesLoaded(e) {
     // event.target is the xhr object
     let xhr = e.target;
@@ -115,8 +119,14 @@ function categoriesLoaded(e) {
     }
 }
 
+// Called when the generate button is clicked. Handles builing
+// url that is then used to open an xhr request. Also updated the
+// browser local storage
 function generateButtonClicked() {
     console.log("generateButtonClicked() called");
+
+    document.querySelector(".carousel-inner").innerHTML = "<h2>Loading questions...</h2>";
+    document.querySelector(".carousel-overlay-controls").style.visibility = "hidden";
 
     const TB_URL = "https://opentdb.com/api.php?";
 
@@ -152,6 +162,8 @@ function generateButtonClicked() {
 
 }
 
+// Opens/handles getting an xhr request for the questions,
+// and then calling appropriate functions based on results 
 function getData(url) {
     // create new XHR object
     let xhr = new XMLHttpRequest();
@@ -167,7 +179,8 @@ function getData(url) {
     xhr.send();
 }
 
-// Callback functions
+// Calls if the xhr request for the questions was successful.
+// Updates the DOM with the new questions
 function dataLoaded(e) {
     // event.target is the xhr object
     let xhr = e.target;
@@ -182,14 +195,14 @@ function dataLoaded(e) {
     if (!obj.results || obj.results.length == 0) {
         // document.querySelector("#status").innerHTML = "<b> No results found for '" + category + "'</b>";
         console.log("bail");
+        document.querySelector(".carousel-inner").innerHTML = "<h2>An error occurred while loading questions. Please wait a few seconds and try again.";
         return; // Bail out
     }
-
-    document.querySelector("h2.q_question").innerHTML = "<h2>test question</h2>";
 
     // Start building an HTML string we will display to the user
     let results = obj.results;
     console.log("results.length = " + results.length);
+    document.querySelector(".carousel-overlay-controls").style.visibility = "visible";
     // let bigString = "<p><i>Here are " + results.length + " results for '" + displayTerm + "'</i></p>";
     let bigString = "";
 
@@ -286,10 +299,14 @@ function dataLoaded(e) {
     // document.querySelector("#status").innerHTML = "<b>Success!</b>" + "<p><i>Here are " + results.length + " results for '" + displayTerm + "'</i></p>";
 }
 
+// Called when there is an error loading data (either categories or questions)
 function dataError(e) {
     console.log("An error occurred");
+    document.querySelector(".carousel-inner").innerHTML = "<h2>An error occurred while loading data. Please wait a few seconds and try again.";
 }
 
+// Called when the "reveal answer" button is clicked. Disables the button
+// after the answer is revealed.
 function revealAnswer(e) {
     let revealButton = e.target;
     // console.log(revealButton);
@@ -300,7 +317,9 @@ function revealAnswer(e) {
     revealButton.disabled = true;
 }
 
-// Method to switch questions between displays
+// Method to switch questions between display options.
+// Called when the "Display All Questions"/"Display One Question"
+// button is clicked.
 function switchDisplay(e) {
     if (currentlyCarousel) {
         // Code to switch
@@ -350,7 +369,11 @@ function switchDisplay(e) {
 //     carouselInstance.to(e.target.value);
 // }
 
-// Lock in user's answer and check whether the user selected the correct answer
+// Called when the "Check Answer!" button is clicked.
+// Checks that an answer has been seleced. If one has, it sets
+// the radio input options and the check answer button to disabled to "lock in"
+// the user's answer, changes the DOM to display whether the answer was correct,
+// and enables the button that allows the user to reveal the answer.
 function checkAnswer(e) {
     // Get the check button which was checked
     console.log("check clicked");

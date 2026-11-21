@@ -62,7 +62,6 @@ div#carouselPeek {
     grid-template-rows: auto;
 
     padding: 5rem;
-    padding-bottom: auto;
 }
 
 div.q_content .q_answer {
